@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipos de vehiculos"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="20dp">
+        </TextView>
+
+        <RadioGroup
+            android:id="@+id/rgVehiculos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/rbSedan"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Sedan">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbCamion"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Camion">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbHibrido"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Hibrido">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbCamioneta"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Camioneta">
+            </RadioButton>
+
+            <RadioButton
+                android:id="@+id/rbCompacto"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:text="Compacto">
+            </RadioButton>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtv1Bienvenida"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pesonalizaciones"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/black">
+        </TextView>
+
+        <RadioGroup
+            android:id="@+id/rgPersonalizaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/chkRines"
+                android:text="Rines:    $500">
+            </CheckBox>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/chkPolarizado"
+                android:text="Polarizado:   $100">
+            </CheckBox>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/chkAudio"
+                android:text="Audio:    $250">
+            </CheckBox>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/chkBlindaje"
+                android:text="Blindaje:    $2000">
+            </CheckBox>
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/chkAlarma"
+                android:text="Alarma:    $150">
+            </CheckBox>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/Cobro"
+        android:text="Factura"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
