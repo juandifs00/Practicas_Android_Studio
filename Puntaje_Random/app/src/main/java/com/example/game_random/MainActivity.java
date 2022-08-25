@@ -34,14 +34,10 @@ public class MainActivity extends AppCompatActivity {
         btnGenerar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 int aletorio = Ganadores.nextInt(90)+10;
                 ganador = aletorio;
-
                 btnGenerar.setText(ganador + "");
-
-                Integer nuevo_puntaje = puntajes();
-
+                Integer nuevo_puntaje = comprobar_diferencia();
                 tvPuntos.setText(nuevo_puntaje+"");
             }
         });
@@ -68,25 +64,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Integer puntajes() {
+    public int comprobar_diferencia() {
         Integer numero = Integer.parseInt(etNumeroIngresado.getText().toString());
+        Integer dato_aleatorio = Integer.parseInt(btnGenerar.getText().toString());
 
-        if (numero.equals(ganador)) {
+        int distancia;
+
+        distancia = Math.abs(dato_aleatorio - numero);
+
+        if (numero.equals(distancia)) {
             puntaje_actual += 50;
-        }else {
-            if (numero > 5 && numero <= 10) {
+        } else {
+            if (distancia > 5 && distancia <= 10) {
                 puntaje_actual += 5;
-            }else {
-                if (numero > 1 && numero <= 5) {
+            } else {
+                if (distancia > 1 && distancia <= 5) {
                     puntaje_actual += 10;
-                }else {
-                    if (numero == 1) {
+                } else {
+                    if (distancia == 1) {
                         puntaje_actual += 15;
                     }
                 }
             }
         }
-        return puntaje_actual;
+        return distancia;
     }
 
     private void comprobar_vacio() {
