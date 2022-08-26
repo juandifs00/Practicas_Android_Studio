@@ -2,6 +2,7 @@ package com.example.quiz_puntajes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,12 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView tvGenEnteros;
-    Button btnGenerador, sIntentos, sPuntos;
+    Button btnGenerador, sIntentos, sPuntos, btnReinicio;
 
-    int Intentos = 10;
+    int Intentos = 9;
     int puntaje = 0;
+    int canNumeros = 5;
+    String datoAleatorio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,30 +31,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 sIntentos.setText(Intentos + "");
                 reducirOportunidades();
-
-                //btnGenerador.setText();
+                String numeros = generarAletorios();
+                tvGenEnteros.setText(numeros + "");
             }
         });
     }
 
-    public int[] generarAletorios() {
-        int size = 5;
-            int[] vector = new int[size];
+    public String generarAletorios() {
 
-            for(int i=0;i<vector.length;i++){
-                vector[i] = new Random().nextInt(40);
-            }
-            return vector;
+        Integer [] vector = new Integer[canNumeros];
+
+        for (int i=0;i<vector.length;i++){
+            vector[i] = new Random().nextInt((1000) - 100) + 100;
+        }
+
+        datoAleatorio = "";
+        for (int i=0;i<vector.length;i++) {
+            datoAleatorio += vector[i].toString() + ", ";
+        };
+        return datoAleatorio;
     }
 
     public void reducirOportunidades() {
         if (btnGenerador.hasOnClickListeners()) {
-            if (Intentos > 0) {
+            if (Intentos >= 0) {
                 Intentos--;
             }
             if(btnGenerador.isEnabled()) {
-                if (Intentos == 0) {
+                if (Intentos < 0) {
                     btnGenerador.setEnabled(false);
+                    sIntentos.setBackgroundColor(Color.RED);
                 }
             }
         }
