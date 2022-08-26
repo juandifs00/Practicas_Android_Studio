@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvGenEnteros"
+        android:padding="15dp"
+        android:hint="Generador de enteros"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        ></TextView>
+
+    <Button
+        android:id="@+id/btnGenerador"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:padding="15dp"
+        android:text="GENERAR"
+        android:textSize="20sp"></Button>
+
+    <TextView
+        android:layout_width="103dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="159dp"
+        android:text="Intentos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        ></TextView>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="44dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="252dp"
+        android:text="Puntos"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        ></TextView>
+
+    <Button
+        android:id="@+id/sIntentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        ></Button>
+
+    <Button
+        android:id="@+id/sPuntos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginEnd="53dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        ></Button>
+
+</RelativeLayout>
