@@ -7,18 +7,22 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     TextView tvGenEnteros;
-    Button btnGenerador, sIntentos, sPuntos, btnReinicio;
+    Button btnGenerador, sIntentos, sPuntos;
 
     int Intentos = 9;
     int puntaje = 0;
     int canNumeros = 5;
-    String datoAleatorio;
+
+    ArrayList <Integer> numeros = new ArrayList();
+    ArrayList <Integer> aux = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +35,54 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 sIntentos.setText(Intentos + "");
                 reducirOportunidades();
-                String numeros = generarAletorios();
-                tvGenEnteros.setText(numeros + "");
+                generarAletorios();
+                tvGenEnteros.setText(numeros.toString());
+                puntuacion();
+                sPuntos.setText(puntaje+ "");
+                numeros.clear();
             }
         });
     }
 
-    public String generarAletorios() {
-
-        Integer [] vector = new Integer[canNumeros];
-
-        for (int i=0;i<vector.length;i++){
-            vector[i] = new Random().nextInt((1000) - 100) + 100;
+    public void generarAletorios() {
+        for (int i=0;i<canNumeros;i++){
+            numeros.add(new Random().nextInt(900) + 100);
         }
+    }
 
-        datoAleatorio = "";
-        for (int i=0;i<vector.length;i++) {
-            datoAleatorio += vector[i].toString() + ", ";
-        };
-        return datoAleatorio;
+    public void puntuacion() {
+        int auxiliar;
+        int P_auxiliar = 0;
+        for (int i = 0; i < numeros.size(); i++) {
+            auxiliar = numeros.get(i);
+
+            while (auxiliar > 0) {
+                aux.add(new Integer(auxiliar % 10));
+                auxiliar = auxiliar/10;
+            }
+
+            if (aux.get(0) == aux.get(aux.size() - 1)) {
+                puntaje += 3;
+            }
+
+            for (int j = 0; j < aux.size(); j++) {
+                if (aux.get(j) == 5) {
+                    puntaje +=  1;
+                }
+                P_auxiliar += (aux.get(j));
+            }
+
+            if (P_auxiliar > 12) {
+                puntaje += 5;
+            }
+        }
+        aux.clear();
+        if (puntaje >= 20) {
+            btnGenerador.setEnabled(false);
+            Toast.makeText(getApplicationContext(), "GANASTE", Toast.LENGTH_LONG).show();
+            sPuntos.setBackgroundColor(Color.GREEN);
+            sIntentos.setBackgroundColor(Color.GREEN);
+        }
     }
 
     public void reducirOportunidades() {
