@@ -9,15 +9,14 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/tvGenEnteros"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tvGenEnteros"
-        android:padding="15dp"
         android:hint="Generador de enteros"
-        android:textColor="@color/black"
+        android:padding="15dp"
         android:textAlignment="center"
-        android:textSize="20sp"
-        ></TextView>
+        android:textColor="@color/black"
+        android:textSize="20sp"></TextView>
 
     <Button
         android:id="@+id/btnGenerador"
@@ -77,6 +76,19 @@
         android:layout_marginEnd="53dp"
         android:backgroundTint="@color/white"
         android:textColor="@color/black"
+        ></Button>
+
+    <Button
+        android:id="@+id/btnReiniciar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="146dp"
+        android:text="REINCIAR"
+        android:backgroundTint="@color/RED"
+        android:textSize="20sp"
+        android:padding="10dp"
         ></Button>
 
 </RelativeLayout>

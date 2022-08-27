@@ -15,7 +15,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     TextView tvGenEnteros;
-    Button btnGenerador, sIntentos, sPuntos;
+    Button btnGenerador, sIntentos, sPuntos, btnReiniciar;
 
     int Intentos = 9;
     int puntaje = 0;
@@ -40,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
                 puntuacion();
                 sPuntos.setText(puntaje+ "");
                 numeros.clear();
+            }
+        });
+
+        btnReiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intentos = 9;
+                tvGenEnteros.setText("Generador de enteros");
+                puntaje = 0;
+                btnGenerador.setText("GENERAR");
+                btnGenerador.setEnabled(true);
+                sIntentos.setText("");
+                sPuntos.setText("");
+                sIntentos.setBackgroundColor(Color.WHITE);
+                sPuntos.setBackgroundColor(Color.WHITE);
             }
         });
     }
@@ -77,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         aux.clear();
-        if (puntaje >= 20) {
+        if (puntaje >= 180) {
             btnGenerador.setEnabled(false);
             Toast.makeText(getApplicationContext(), "GANASTE", Toast.LENGTH_LONG).show();
             sPuntos.setBackgroundColor(Color.GREEN);
@@ -104,5 +119,6 @@ public class MainActivity extends AppCompatActivity {
         btnGenerador = findViewById(R.id.btnGenerador);
         sIntentos = findViewById(R.id.sIntentos);
         sPuntos = findViewById(R.id.sPuntos);
+        btnReiniciar = findViewById(R.id.btnReiniciar);
     }
 }
