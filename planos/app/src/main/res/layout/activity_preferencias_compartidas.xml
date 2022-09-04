@@ -12,7 +12,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/etValor"
-        android:hint="Valor"
+        android:hint="Dato String"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etEntero"
+        android:hint="Dato Entero"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        ></EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etBooleano"
+        android:hint="Dato Booleano"
         android:textAlignment="center"
         android:textSize="20sp"
         ></EditText>
@@ -21,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btnGuardar"
-        android:text="Guardar Valor"
+        android:text="Guardar Dato"
         android:textSize="20sp"
         ></Button>
 
@@ -29,6 +47,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvSalida"
+        android:hint="Dato string"
+        android:textAlignment="center"
+        ></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSalidaEntero"
+        android:hint="Dato entero"
+        android:textAlignment="center"
         ></TextView>
 
 </LinearLayout>

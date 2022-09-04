@@ -12,23 +12,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class PreferenciasCompartidas extends AppCompatActivity {
-    EditText etValor;
+    EditText etValor, etEntero, etBooleano;
     Button btnGuardar;
-    TextView tvSalida;
+    TextView tvSalida, tvSalidaEntero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preferencias_compartidas);
         conectar();
+
         //Context ctx = this;
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String valor = etValor.getText().toString();
                 SharedPreferences sp = getSharedPreferences("Archivo", Context.MODE_PRIVATE);
-                String Nombre = sp.getString("ElNombre", valor);
+                String valor = etValor.getText().toString();
+                int datoentero = Integer.parseInt(etEntero.getText().toString());
+                SharedPreferences.Editor editor = sp.edit();
+                editor.putString("N", valor).apply();
+                editor.putInt("E", datoentero).apply();
+                String Nombre = sp.getString("N", valor);
+                int Nombre2 = sp.getInt("E", datoentero);
                 Toast.makeText(getApplicationContext(), Nombre, Toast.LENGTH_LONG).show();
+                tvSalida.setText(Nombre);
+                tvSalidaEntero.setText(Nombre2);
             }
         });
     }
