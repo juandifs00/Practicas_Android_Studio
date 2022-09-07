@@ -9,7 +9,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200sp"
         android:hint="Escribe algo aqui"
         android:textSize="25sp"
         android:textAlignment="center"
@@ -18,7 +18,7 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65sp"
         android:text="Oprimeme"
         android:textSize="25sp"
         android:id="@+id/btnOprimir"
@@ -26,11 +26,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250sp"
         android:hint="Tu resultado"
         android:textSize="25sp"
         android:textAlignment="center"
-        android:id="@+id/tvResultad"
+        android:id="@+id/tvResultado"
         ></TextView>
 
 </LinearLayout>
