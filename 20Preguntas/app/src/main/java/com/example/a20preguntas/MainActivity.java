@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
             btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3;
 
-    TextView tvPuntaje, tvPreguntas;
+    TextView tvPuntaje, tvPreguntas, tvAciertos, tvErrores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         conexion();
     }
+
+
+
+
 
     private void conexion() {
         btnP1 = findViewById(R.id.btnP1);
@@ -41,12 +45,14 @@ public class MainActivity extends AppCompatActivity {
         btnP18 = findViewById(R.id.btnP18);
         btnP19 = findViewById(R.id.btnP19);
         btnP20 = findViewById(R.id.btnP20);
-        
+
         btnR1 = findViewById(R.id.btnR1);
         btnR2 = findViewById(R.id.btnR2);
         btnR3 = findViewById(R.id.btnR3);
 
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
+        tvAciertos = findViewById(R.id.tvAciertos);
+        tvErrores = findViewById(R.id.tvErrores);
     }
 }
