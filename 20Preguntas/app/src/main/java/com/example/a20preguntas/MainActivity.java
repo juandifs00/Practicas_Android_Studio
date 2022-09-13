@@ -20,10 +20,6 @@ public class MainActivity extends AppCompatActivity {
         conexion();
     }
 
-
-
-
-
     private void conexion() {
         btnP1 = findViewById(R.id.btnP1);
         btnP2 = findViewById(R.id.btnP2);
