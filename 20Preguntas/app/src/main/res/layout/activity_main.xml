@@ -228,7 +228,7 @@
         android:layout_height="35dp"
         android:text="Puntaje"
         android:textAlignment="center"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:id="@+id/tvPuntaje"
         ></TextView>
 
@@ -238,7 +238,7 @@
         android:text="Tu pregunta saldrá aquí:"
         android:textAlignment="center"
         android:textColor="@color/orange"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:padding="12dp"
         android:id="@+id/tvPreguntas"
         ></TextView>
@@ -248,7 +248,7 @@
         android:layout_height="wrap_content"
         android:text="Respuesta 1"
         android:id="@+id/btnR1"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:backgroundTint="@color/orange"
         ></Button>
 
@@ -257,7 +257,7 @@
         android:layout_height="wrap_content"
         android:text="Respuesta 2"
         android:id="@+id/btnR2"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:backgroundTint="@color/red"
         ></Button>
 
@@ -266,7 +266,7 @@
         android:layout_height="wrap_content"
         android:text="Respuesta 3"
         android:id="@+id/btnR3"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:backgroundTint="@color/blue"
         ></Button>
 
