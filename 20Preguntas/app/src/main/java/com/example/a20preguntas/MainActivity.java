@@ -1,15 +1,16 @@
 package com.example.a20preguntas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -40,138 +41,164 @@ public class MainActivity extends AppCompatActivity {
         btnP1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP1);
             }
         });
 
         btnP2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP2);
             }
         });
 
         btnP3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP3);
             }
         });
 
         btnP4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP4);
             }
         });
 
         btnP5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP5);
             }
         });
 
         btnP6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP6);
             }
         });
 
         btnP7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP7);
             }
         });
 
         btnP8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP8);
             }
         });
 
         btnP9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP9);
             }
         });
 
         btnP10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP10);
             }
         });
 
         btnP11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP11);
             }
         });
 
         btnP12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP12);
             }
         });
 
         btnP13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP13);
             }
         });
 
         btnP14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP14);
             }
         });
 
         btnP15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP15);
             }
         });
 
         btnP16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP16);
             }
         });
 
         btnP17.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP17);
             }
         });
 
         btnP18.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP18);
             }
         });
 
         btnP19.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP19);
             }
         });
 
         btnP20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PintPreguntas(btnP20);
             }
         });
 
         btnR1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Comprobar(btnR1);
+                Habilitar(false);
             }
         });
 
         btnR2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Comprobar(btnR2);
+                Habilitar(false);
             }
         });
 
         btnR3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Comprobar(btnR3);
+                Habilitar(false);
             }
         });
     }
@@ -200,12 +227,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void AñadirPreguntas() {
         XPreguntas.add(new Preguntas("¿Cuanto es un lustro?", "5 años", "10 años", "2 siglos", "5 años", 10));
-        XPreguntas.add(new Preguntas("¿Cuanto es 20 * 50?", "100", "250", "350", "100", 10));
+        XPreguntas.add(new Preguntas("¿Cuanto es 20 * 50?", "500", "250", "100", "100", 10));
         XPreguntas.add(new Preguntas("¿HTML es un lenguaje de programacion?", "Si", "No", "No sé", "No", 10));
         XPreguntas.add(new Preguntas("¿El RGB da más FPS?", "No", "Obvio pa", "Jamás", "Obvio pa", 15));
-        XPreguntas.add(new Preguntas("¿Que pesa más, 1Kg de acero o 1Kg de algodón?", "Pesan lo mismo", "El acero", "El algodón", "", 10));
-        XPreguntas.add(new Preguntas("¿Cuál es la fórmula química del ácido clorhídrico?", "ACH", "HCI", "CBD", "HCI", 10));
-        XPreguntas.add(new Preguntas("¿Qué número equivale al 16 en hexadecimal?", "1B", "0G", "10", "10", 10));
+        XPreguntas.add(new Preguntas("¿Que pesa más, 1Kg de acero o 1Kg de algodón?", "Pesan lo mismo", "El acero", "El algodón", "Pesan lo mismo", 10));
+        XPreguntas.add(new Preguntas("¿Fórmula química del ácido clorhídrico?", "ACH", "DCH", "HCI", "HCI", 10));
+        XPreguntas.add(new Preguntas("16 en hexadecimal", "1B", "0G", "10", "10", 10));
         XPreguntas.add(new Preguntas("¿Cuánto midió el hombre más alto del mundo?", "199cm", "235cm", "272cm", "272cm", 10));
         XPreguntas.add(new Preguntas("¿Qué dedo de la mano sólo tiene dos falanges?", "El pulgar", "El indice", "Ninguno", "El pulgar", 10));
         XPreguntas.add(new Preguntas("20 + 100 + 420", "580", "460", "540", "540", 10));
@@ -228,10 +255,12 @@ public class MainActivity extends AppCompatActivity {
             tvPuntaje.setText(PuntosTotal + "");
             tvAciertos.setText(PAcertadas + "");
             Pregunta.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
-            Toast.makeText(this, "Pregunta Acertada", Toast.LENGTH_LONG).show();
+            btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
+            btnTemp.setEnabled(false);
         } else {
             Pregunta.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-            Toast.makeText(this, "Pregunta Incorrecta", Toast.LENGTH_LONG).show();
+            btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
+            btnTemp.setEnabled(false);
         }
     }
 
@@ -241,9 +270,16 @@ public class MainActivity extends AppCompatActivity {
         btnR3.setEnabled(Deshabilitar);
     }
 
+    public void ReinicioRespuestas() {
+        btnR1.setBackgroundColor(Color.parseColor("#CC6600"));
+        btnR2.setBackgroundColor(Color.parseColor("#CC3300"));
+        btnR3.setBackgroundColor(Color.parseColor("#000066"));
+    }
+
     public void PintPreguntas(Button NP) {
         MostrarPregunta(NP);
         Habilitar(true);
+        ReinicioRespuestas();
     }
 
     private void conexion() {

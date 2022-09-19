@@ -234,12 +234,12 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="85dp"
         android:text="Tu pregunta saldrá aquí:"
         android:textAlignment="center"
         android:textColor="@color/orange"
-        android:textSize="25sp"
-        android:padding="12dp"
+        android:textSize="20sp"
+        android:padding="15dp"
         android:id="@+id/tvPreguntas"
         ></TextView>
 
