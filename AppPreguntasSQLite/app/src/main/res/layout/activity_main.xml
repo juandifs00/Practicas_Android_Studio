@@ -1,18 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="PREGUNTAS"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:textColor="@color/especial"
+        android:padding="10dp"
+        ></TextView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P1"
+            android:textSize="20sp"
+            android:id="@+id/btnP1"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P2"
+            android:textSize="20sp"
+            android:id="@+id/btnP2"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P3"
+            android:textSize="20sp"
+            android:id="@+id/btnP3"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P4"
+            android:textSize="20sp"
+            android:id="@+id/btnP4"
+            android:backgroundTint="@color/purple">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P5"
+            android:textSize="20sp"
+            android:id="@+id/btnP5"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P6"
+            android:textSize="20sp"
+            android:id="@+id/btnP6"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P7"
+            android:textSize="20sp"
+            android:id="@+id/btnP7"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P8"
+            android:textSize="20sp"
+            android:id="@+id/btnP8"
+            android:backgroundTint="@color/purple">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P9"
+            android:textSize="20sp"
+            android:id="@+id/btnP9"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P10"
+            android:textSize="20sp"
+            android:id="@+id/btnP10"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P11"
+            android:textSize="20sp"
+            android:id="@+id/btnP11"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P12"
+            android:textSize="20sp"
+            android:id="@+id/btnP12"
+            android:backgroundTint="@color/purple">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P13"
+            android:textSize="20sp"
+            android:id="@+id/btnP13"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P14"
+            android:textSize="20sp"
+            android:id="@+id/btnP14"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P15"
+            android:textSize="20sp"
+            android:id="@+id/btnP15"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P16"
+            android:textSize="20sp"
+            android:id="@+id/btnP16"
+            android:backgroundTint="@color/purple">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P17"
+            android:textSize="20sp"
+            android:id="@+id/btnP17"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P18"
+            android:textSize="20sp"
+            android:id="@+id/btnP18"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P19"
+            android:textSize="20sp"
+            android:id="@+id/btnP19"
+            android:backgroundTint="@color/purple">
+        </Button>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:text="P20"
+            android:textSize="20sp"
+            android:id="@+id/btnP20"
+            android:backgroundTint="@color/purple">
+        </Button>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Puntaje"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:id="@+id/tvPuntaje"
+        ></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:text="Tu pregunta saldrá aquí:"
+        android:textAlignment="center"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:padding="15dp"
+        android:id="@+id/tvPreguntas"
+        ></TextView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Respuesta 1"
+        android:id="@+id/btnR1"
+        android:textSize="15sp"
+        android:backgroundTint="@color/orange"
+        ></Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Respuesta 2"
+        android:id="@+id/btnR2"
+        android:textSize="15sp"
+        android:backgroundTint="@color/red"
+        ></Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Respuesta 3"
+        android:id="@+id/btnR3"
+        android:textSize="15sp"
+        android:backgroundTint="@color/blue"
+        ></Button>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:text="Aciertos"
+            android:textSize="20sp"
+            android:textColor="@color/especial"
+            android:backgroundTint="@color/white"
+            android:id="@+id/btnAciertos"
+            android:clickable="false">
+        </Button>
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Numero aciertos"
+            android:textSize="20sp"
+            android:id="@+id/tvAciertos"
+            android:layout_marginStart="70dp">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
