@@ -12,4 +12,6 @@
     <color name="red">#CC3300</color>
     <color name="blue">#000066</color>
     <color name="especial">#33FF00</color>
+    <color name="añadir">#004d00</color>
+    <color name="regresar">#3d3d66</color>
 </resources>
