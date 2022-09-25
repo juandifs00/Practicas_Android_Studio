@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     Button btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7,
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
-            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3;
+            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnAddPreguntas;
 
     TextView tvPuntaje, tvPreguntas, tvAciertos;
 
@@ -197,6 +198,14 @@ public class MainActivity extends AppCompatActivity {
                 Habilitar(false);
             }
         });
+
+        btnAddPreguntas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent AddPreguntas = new Intent(getApplicationContext(), PPreguntas.class);
+                startActivity(AddPreguntas);
+            }
+        });
     }
 
     public void MostrarPregunta(Button NP) {
@@ -265,5 +274,7 @@ public class MainActivity extends AppCompatActivity {
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
         tvAciertos = findViewById(R.id.tvAciertos);
+
+        btnAddPreguntas = findViewById(R.id.btnAddPreguntas);
     }
 }
