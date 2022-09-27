@@ -11,15 +11,18 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
     Button btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7,
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
-            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3;
+            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnAgregar, btnMJugadores;
 
-    TextView tvPuntaje, tvPreguntas, tvAciertos;
+    TextView tvPuntaje, tvPreguntas;
+
+    EditText etNombre;
 
     int PuntajePregunta, PAcertadas, PuntosTotal;
     String Acertada;
@@ -196,6 +199,22 @@ public class MainActivity extends AppCompatActivity {
                 Habilitar(false);
             }
         });
+
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent AddPreguntas = new Intent(getApplicationContext(), AddPreguntas.class);
+                startActivity(AddPreguntas);
+            }
+        });
+
+        btnMJugadores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent MJugadores = new Intent(getApplicationContext(), MejoresJugadores.class);
+                startActivity(MJugadores);
+            }
+        });
     }
 
     public void MostrarPregunta(Button NP) {
@@ -206,7 +225,6 @@ public class MainActivity extends AppCompatActivity {
             PuntosTotal += PuntajePregunta;
             PAcertadas += 1;
             tvPuntaje.setText(PuntosTotal + "");
-            tvAciertos.setText(PAcertadas + "");
             Pregunta.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             btnTemp.setEnabled(false);
@@ -263,6 +281,8 @@ public class MainActivity extends AppCompatActivity {
 
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
-        tvAciertos = findViewById(R.id.tvAciertos);
+
+        btnAgregar = findViewById(R.id.btnAgregar);
+        btnMJugadores = findViewById(R.id.btnMJugadores);
     }
 }
