@@ -26,10 +26,10 @@ public class MejoresJugadores extends AppCompatActivity {
                 startActivity(regresar);
             }
         });
-
     }
 
     private void conexion() {
         btnVolver = findViewById(R.id.btnVolver);
+        lvMJugadores = findViewById(R.id.lvMJugadores);
     }
 }

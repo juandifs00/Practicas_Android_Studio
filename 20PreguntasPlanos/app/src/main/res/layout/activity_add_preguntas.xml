@@ -84,7 +84,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver al juego"
+            android:text="Volver al menu"
             android:id="@+id/btnVolver"
             android:backgroundTint="@color/regresar"
             android:layout_marginTop="30dp"
@@ -96,11 +96,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ListView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lvPAgregadas"
-            ></ListView>
+            android:id="@+id/tvPAgregadas"
+            ></TextView>
 
     </LinearLayout>
 

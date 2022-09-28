@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etNombre;
 
-    String Nombres = etNombre.getText().toString();
-    ArrayList<String> LMJugadores = new ArrayList<String>();
-
     int PuntajePregunta, PAcertadas, PuntosTotal;
     String Acertada;
     Button btnTemp;
@@ -39,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         conexion();
         PuntosTotal = 0;
         PuntajePregunta = 0;
+
+        String Nombres = etNombre.getText().toString();
+        ArrayList<String> LMJugadores = new ArrayList<String>();
 
         btnP1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,8 +213,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void MostrarPregunta(Button NP) {
-    }
+    //public void MostrarPregunta(Button NP) {
+    //}
 
     public void Comprobar(Button Pregunta) {
         if (Pregunta.getText() == Acertada) {
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void PintPreguntas(Button NP) {
-        MostrarPregunta(NP);
+        //MostrarPregunta(NP);
         Habilitar(true);
         ReinicioRespuestas();
     }
@@ -277,6 +277,8 @@ public class MainActivity extends AppCompatActivity {
 
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
+
+        etNombre = findViewById(R.id.etNombre);
 
         btnMJugadores = findViewById(R.id.btnMJugadores);
     }

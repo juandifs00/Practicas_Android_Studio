@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -15,16 +17,18 @@ public class AddPreguntas extends AppCompatActivity {
 
     EditText etPegunta, etResp1, etResp2, etResp3, etOpCorrecta;
     Button btnRegistar, btnVolver;
-    ListView lvPAgregadas;
+    TextView tvPAgregadas;
 
     String Pregunta, Resp1, Resp2, Resp3, Opcorr;
+
+    Preguntas objAp = new Preguntas(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_preguntas);
         conexion();
-        Preguntas objAp = new Preguntas(this);
+        Mostrar_Preguntas();
 
         btnRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,12 +39,12 @@ public class AddPreguntas extends AppCompatActivity {
                 Resp3 = etResp3.getText().toString();
                 Opcorr = etOpCorrecta.getText().toString();
 
+                String POrganizada = Pregunta + " ;" + Resp1 + " ;" + Resp2 + " ;" + Resp3 + " ;" + Opcorr + " ;" + "\n";
+
                 try {
-                    objAp.Escribir(Pregunta);
-                    objAp.Escribir(Resp1);
-                    objAp.Escribir(Resp2);
-                    objAp.Escribir(Resp3);
-                    objAp.Escribir(Opcorr);
+                    objAp.Escribir(POrganizada);
+                    Toast.makeText(getApplicationContext(), "Preguntas insertadas correctamente", Toast.LENGTH_SHORT).show();
+                    Mostrar_Preguntas();
                 }
                 catch (IOException ex) {
                     ex.getMessage();
@@ -51,13 +55,15 @@ public class AddPreguntas extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regresar = new Intent(getApplicationContext(), MainActivity.class);
+                Intent regresar = new Intent(getApplicationContext(), Perfiles.class);
                 startActivity(regresar);
             }
         });
     }
-    
+
     public void Mostrar_Preguntas() {
+        String mostrarP = objAp.Leer();
+        tvPAgregadas.setText(mostrarP);
     }
 
     private void conexion() {
@@ -69,5 +75,7 @@ public class AddPreguntas extends AppCompatActivity {
 
         btnRegistar = findViewById(R.id.btnRegistar);
         btnVolver = findViewById(R.id.btnVolver);
+
+        tvPAgregadas = findViewById(R.id.tvPAgregadas);
     }
 }
