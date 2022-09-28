@@ -14,15 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Button btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7,
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
-            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnAgregar, btnMJugadores;
+            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnMJugadores;
 
     TextView tvPuntaje, tvPreguntas;
 
     EditText etNombre;
+
+    String Nombres = etNombre.getText().toString();
+    ArrayList<String> LMJugadores = new ArrayList<String>();
 
     int PuntajePregunta, PAcertadas, PuntosTotal;
     String Acertada;
@@ -200,14 +204,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnAgregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent AddPreguntas = new Intent(getApplicationContext(), AddPreguntas.class);
-                startActivity(AddPreguntas);
-            }
-        });
-
         btnMJugadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -282,7 +278,6 @@ public class MainActivity extends AppCompatActivity {
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
 
-        btnAgregar = findViewById(R.id.btnAgregar);
         btnMJugadores = findViewById(R.id.btnMJugadores);
     }
 }

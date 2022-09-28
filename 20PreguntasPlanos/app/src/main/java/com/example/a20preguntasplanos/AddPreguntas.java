@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import java.io.IOException;
 
@@ -14,6 +15,7 @@ public class AddPreguntas extends AppCompatActivity {
 
     EditText etPegunta, etResp1, etResp2, etResp3, etOpCorrecta;
     Button btnRegistar, btnVolver;
+    ListView lvPAgregadas;
 
     String Pregunta, Resp1, Resp2, Resp3, Opcorr;
 
@@ -53,6 +55,9 @@ public class AddPreguntas extends AppCompatActivity {
                 startActivity(regresar);
             }
         });
+    }
+    
+    public void Mostrar_Preguntas() {
     }
 
     private void conexion() {

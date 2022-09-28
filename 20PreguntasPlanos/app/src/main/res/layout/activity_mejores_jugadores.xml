@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MejoresJugadores"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -18,12 +19,29 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp">
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="500dp"
+            android:id="@+id/lvMJugadores">
         </ListView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver al juego"
+            android:id="@+id/btnVolver"
+            android:backgroundTint="@color/regresar"
+            android:layout_marginTop="30dp"
+            ></Button>
 
     </LinearLayout>
 
