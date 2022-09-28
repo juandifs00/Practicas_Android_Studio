@@ -47,7 +47,7 @@ public class PPreguntas extends AppCompatActivity {
 
     public void Agregar(String Pregunta, String Resp1, String Resp2, String Resp3, String RespCor) {
         DBHelper helper = new DBHelper(this, "LasPreguntas", null, 1);
-        SQLiteDatabase DB = helper.getReadableDatabase();
+        SQLiteDatabase DB = helper.getWritableDatabase();
 
         try {
             ContentValues cv = new ContentValues();
