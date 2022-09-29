@@ -65,6 +65,13 @@
             android:id="@+id/etOpCorrecta"
             ></EditText>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Puntuacion"
+            android:id="@+id/etPuntuacion"
+            ></EditText>
+
     </LinearLayout>
 
     <LinearLayout

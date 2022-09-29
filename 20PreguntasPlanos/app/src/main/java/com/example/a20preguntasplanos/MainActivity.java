@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7,
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText etNombre;
 
+    ArrayList<Preguntas> XPreguntas = new ArrayList<>();
+    Random random = new Random();
+
     int PuntajePregunta, PAcertadas, PuntosTotal;
     String Acertada;
     Button btnTemp;
@@ -34,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         conexion();
+        AñadirPreguntas();
         PuntosTotal = 0;
         PuntajePregunta = 0;
 
@@ -213,8 +218,32 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //public void MostrarPregunta(Button NP) {
-    //}
+    public void MostrarPregunta(Button NP) {
+        btnTemp = NP;
+        ArrayList<String> SeleccionR = new ArrayList<>();
+        int intR = random.nextInt(XPreguntas.size());
+
+        SeleccionR.add(XPreguntas.get(intR).getOpUno());
+        SeleccionR.add(XPreguntas.get(intR).getOpDos());
+        SeleccionR.add(XPreguntas.get(intR).getOpTres());
+
+        tvPreguntas.setText(XPreguntas.get(intR).getPregunta());
+
+        btnR1.setText(XPreguntas.get(intR).getOpUno());
+        btnR2.setText(XPreguntas.get(intR).getOpDos());
+        btnR3.setText(XPreguntas.get(intR).getOpTres());
+
+        Acertada = XPreguntas.get(intR).getAcertada();
+
+        PuntajePregunta = XPreguntas.get(intR).getPuntuacion();
+
+        XPreguntas.remove(intR);
+    }
+
+    public void AñadirPreguntas() {
+        PAPLanos plano = new PAPLanos(this);
+        XPreguntas = plano.Leer();
+    }
 
     public void Comprobar(Button Pregunta) {
         if (Pregunta.getText() == Acertada) {
@@ -244,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void PintPreguntas(Button NP) {
-        //MostrarPregunta(NP);
+        MostrarPregunta(NP);
         Habilitar(true);
         ReinicioRespuestas();
     }
