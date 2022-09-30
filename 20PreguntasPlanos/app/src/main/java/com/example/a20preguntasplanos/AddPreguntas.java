@@ -17,7 +17,6 @@ public class AddPreguntas extends AppCompatActivity {
 
     EditText etPegunta, etResp1, etResp2, etResp3, etOpCorrecta, etPuntuacion;
     Button btnRegistar, btnVolver;
-    TextView tvPAgregadas;
 
     String Pregunta, Resp1, Resp2, Resp3, Opcorr, Puntuacion;
 
@@ -28,7 +27,6 @@ public class AddPreguntas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_preguntas);
         conexion();
-        Mostrar_Preguntas();
 
         btnRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +43,6 @@ public class AddPreguntas extends AppCompatActivity {
                 try {
                     objAp.Escribir(POrganizada);
                     Toast.makeText(getApplicationContext(), "Preguntas insertadas correctamente", Toast.LENGTH_SHORT).show();
-                    Mostrar_Preguntas();
                 }
                 catch (IOException ex) {
                     ex.getMessage();
@@ -62,11 +59,6 @@ public class AddPreguntas extends AppCompatActivity {
         });
     }
 
-    public void Mostrar_Preguntas() {
-        //String mostrarP = objAp.Leer();
-        //tvPAgregadas.setText(mostrarP);
-    }
-
     private void conexion() {
         etPegunta = findViewById(R.id.etPegunta);
         etResp1 = findViewById(R.id.etResp1);
@@ -77,7 +69,5 @@ public class AddPreguntas extends AppCompatActivity {
 
         btnRegistar = findViewById(R.id.btnRegistar);
         btnVolver = findViewById(R.id.btnVolver);
-
-        tvPAgregadas = findViewById(R.id.tvPAgregadas);
     }
 }
