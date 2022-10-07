@@ -48,6 +48,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/txtPuntaje"
         android:hint="Puntaje"
+        android:inputType="number"
         ></EditText>
 
     <Button
