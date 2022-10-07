@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PREGUNTAS"
+        android:hint="Introduce tu nombre"
         android:textAlignment="center"
-        android:textSize="25sp"
-        android:textColor="@color/especial"
-        android:padding="10dp"
-        ></TextView>
+        android:textSize="20sp"
+        android:id="@+id/etNombre">
+    </EditText>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -273,40 +272,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
-        <Button
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:text="Aciertos"
-            android:textSize="20sp"
-            android:textColor="@color/especial"
-            android:backgroundTint="@color/white"
-            android:id="@+id/btnAciertos"
-            android:clickable="false">
-        </Button>
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="Numero aciertos"
-            android:textSize="20sp"
-            android:id="@+id/tvAciertos"
-            android:layout_marginStart="70dp">
-        </TextView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="20dp">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Añadir Preguntas"
-            android:id="@+id/btnAddPreguntas"
-            android:backgroundTint="@color/añadir"
-            ></Button>
+            android:layout_marginStart="10dp"
+            android:text="Mejores jugadores"
+            android:backgroundTint="@color/especial"
+            android:id="@+id/btnMJugadores">
+        </Button>
 
     </LinearLayout>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PPreguntas"
+    tools:context=".AñadirPreguntas"
     android:orientation="vertical"
     android:padding="12dp">
 
@@ -65,6 +65,13 @@
             android:id="@+id/etOpCorrecta"
             ></EditText>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Puntuacion"
+            android:id="@+id/etPuntuacion"
+            ></EditText>
+
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +91,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Volver al juego"
+            android:text="Volver al menu"
             android:id="@+id/btnVolver"
             android:backgroundTint="@color/regresar"
             android:layout_marginTop="30dp"

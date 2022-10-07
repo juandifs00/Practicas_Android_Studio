@@ -11,28 +11,32 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class PPreguntas extends AppCompatActivity {
+public class AñadirPreguntas extends AppCompatActivity {
 
-    EditText etPegunta, etResp1, etResp2, etResp3, etOpCorrecta;
+    EditText etPegunta, etResp1, etResp2, etResp3, etOpCorrecta, etPuntuacion;
     Button btnRegistar, btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ppreguntas);
+        setContentView(R.layout.activity_addpreguntas);
         conexion();
 
         btnRegistar.setOnClickListener(new View.OnClickListener() {
+
+            String Pregunta, Resp1, Resp2, Resp3, Opcorr;
+            int Puntuacion;
+
             @Override
             public void onClick(View view) {
-                String pregunta, respuesta1, respuesta2, respuesta3, respuestacorrecta;
-                pregunta = etPegunta.getText().toString();
-                respuesta1 = etResp1.getText().toString();
-                respuesta2 = etResp2.getText().toString();
-                respuesta3 = etResp3.getText().toString();
-                respuestacorrecta = etOpCorrecta.getText().toString();
+                Pregunta = etPegunta.getText().toString();
+                Resp1 = etResp1.getText().toString();
+                Resp2 = etResp2.getText().toString();
+                Resp3 = etResp3.getText().toString();
+                Opcorr = etOpCorrecta.getText().toString();
+                Puntuacion = Integer.valueOf(etPuntuacion.getText().toString());
 
-                Agregar(pregunta, respuesta1, respuesta2, respuesta3, respuestacorrecta);
+                Agregar(Pregunta, Resp1, Resp2, Resp3, Opcorr, Puntuacion);
             }
         });
 
@@ -45,7 +49,7 @@ public class PPreguntas extends AppCompatActivity {
         });
     }
 
-    public void Agregar(String Pregunta, String Resp1, String Resp2, String Resp3, String RespCor) {
+    public void Agregar(String Pregunta, String Resp1, String Resp2, String Resp3, String RespCor, int Puntuacion) {
         DBHelper helper = new DBHelper(this, "LasPreguntas", null, 1);
         SQLiteDatabase DB = helper.getWritableDatabase();
 
@@ -56,13 +60,14 @@ public class PPreguntas extends AppCompatActivity {
             cv.put("Respuesta 2", Resp2);
             cv.put("Respuesta 3", Resp3);
             cv.put("Respuesta correcta", RespCor);
+            cv.put("Puntaje", Puntuacion);
 
             DB.insert("Preguntas", null, cv);
             DB.close();
             Toast.makeText(getApplicationContext(), "Pregunta registrada con exito", Toast.LENGTH_LONG).show();
         }
         catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Preguntas no insertadas" + ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -72,6 +77,7 @@ public class PPreguntas extends AppCompatActivity {
         etResp2 = findViewById(R.id.etResp2);
         etResp3 = findViewById(R.id.etResp3);
         etOpCorrecta = findViewById(R.id.etOpCorrecta);
+        etPuntuacion = findViewById(R.id.etPuntuacion);
 
         btnRegistar = findViewById(R.id.btnRegistar);
         btnVolver = findViewById(R.id.btnVolver);

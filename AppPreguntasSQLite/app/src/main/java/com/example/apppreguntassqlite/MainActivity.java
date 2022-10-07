@@ -11,21 +11,31 @@ import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     Button btnP1, btnP2, btnP3, btnP4, btnP5, btnP6, btnP7,
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
-            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnAddPreguntas;
+            btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnMJugadores;
 
-    TextView tvPuntaje, tvPreguntas, tvAciertos;
+    TextView tvPuntaje, tvPreguntas;
+
+    EditText etNombre;
+
+    ArrayList<CPreguntas> XPreguntas = new ArrayList<>();
+    Random random = new Random();
 
     int PuntajePregunta, PAcertadas, PuntosTotal;
-    String Acertada;
+    String Acertada, Nombre;
     Button btnTemp;
+
+    DataMJugadores objAp = new DataMJugadores(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,24 +209,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnAddPreguntas.setOnClickListener(new View.OnClickListener() {
+        btnMJugadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent AddPreguntas = new Intent(getApplicationContext(), PPreguntas.class);
-                startActivity(AddPreguntas);
+                Intent Ranking = new Intent(getApplicationContext(), MejoresJugadores.class);
+                startActivity(Ranking);
             }
         });
     }
 
     public void MostrarPregunta(Button NP) {
+        btnTemp = NP;
+        ArrayList<String> SeleccionR = new ArrayList<>();
+        int intR = random.nextInt(XPreguntas.size());
+
+        SeleccionR.add(XPreguntas.get(intR).getOpUno());
+        SeleccionR.add(XPreguntas.get(intR).getOpDos());
+        SeleccionR.add(XPreguntas.get(intR).getOpTres());
+
+        tvPreguntas.setText(XPreguntas.get(intR).getPregunta());
+
+        btnR1.setText(XPreguntas.get(intR).getOpUno());
+        btnR2.setText(XPreguntas.get(intR).getOpDos());
+        btnR3.setText(XPreguntas.get(intR).getOpTres());
+
+        Acertada = XPreguntas.get(intR).getAcertada();
+
+        PuntajePregunta = XPreguntas.get(intR).getPuntuacion();
+
+        XPreguntas.remove(intR);
     }
 
     public void Comprobar(Button Pregunta) {
-        if(Pregunta.getText() == Acertada) {
+        if (Integer.parseInt(Pregunta.getText().toString()) == Integer.parseInt(Acertada)) {
             PuntosTotal += PuntajePregunta;
-            PAcertadas +=1;
+            PAcertadas += 1;
+
             tvPuntaje.setText(PuntosTotal + "");
-            tvAciertos.setText(PAcertadas + "");
             Pregunta.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
             btnTemp.setEnabled(false);
@@ -224,6 +253,30 @@ public class MainActivity extends AppCompatActivity {
             Pregunta.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             btnTemp.setEnabled(false);
+        }
+        if ((XPreguntas.size() + PAcertadas) < 20){
+            guardarPuntos();
+            Intent Final = new Intent(getApplicationContext(), FinJuego.class);
+            startActivity(Final);
+        }else if (PAcertadas == 20){
+            guardarPuntos();
+            Intent Final = new Intent(getApplicationContext(), FinJuego.class);
+            startActivity(Final);
+        }
+    }
+
+    public void guardarPuntos() {
+        Nombre = etNombre.getText().toString();
+        String Puntos = PuntosTotal + "";
+
+        String POrganizada = Nombre + ";" + Puntos + "/";
+
+        try {
+            objAp.EscribirRanking(POrganizada);
+            Toast.makeText(getApplicationContext(), "Datos ingesados correctamente", Toast.LENGTH_SHORT).show();
+        }
+        catch (IOException ex) {
+            ex.getMessage();
         }
     }
 
@@ -273,8 +326,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
-        tvAciertos = findViewById(R.id.tvAciertos);
 
-        btnAddPreguntas = findViewById(R.id.btnAddPreguntas);
+        etNombre = findViewById(R.id.etNombre);
+
+        btnMJugadores = findViewById(R.id.btnMJugadores);
     }
 }
