@@ -70,6 +70,7 @@
             android:layout_height="wrap_content"
             android:hint="Puntuacion"
             android:id="@+id/etPuntuacion"
+            android:inputType="number"
             ></EditText>
 
     </LinearLayout>
@@ -85,7 +86,6 @@
             android:text="Registar Pregunta"
             android:id="@+id/btnRegistar"
             android:backgroundTint="@color/purple"
-            android:layout_marginTop="20dp"
             ></Button>
 
         <Button
@@ -94,8 +94,20 @@
             android:text="Volver al menu"
             android:id="@+id/btnVolver"
             android:backgroundTint="@color/regresar"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="8dp"
             ></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvPreguntas">
+        </ListView>
 
     </LinearLayout>
 

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     String Acertada, Nombre;
     Button btnTemp;
 
-    DataMJugadores objAp = new DataMJugadores(this);
+    //DataMJugadores objAp = new DataMJugadores(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,16 +255,17 @@ public class MainActivity extends AppCompatActivity {
             btnTemp.setEnabled(false);
         }
         if ((XPreguntas.size() + PAcertadas) < 20){
-            guardarPuntos();
+            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }else if (PAcertadas == 20){
-            guardarPuntos();
+            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }
     }
 
+    /*
     public void guardarPuntos() {
         Nombre = etNombre.getText().toString();
         String Puntos = PuntosTotal + "";
@@ -279,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
             ex.getMessage();
         }
     }
+     */
 
     public void Habilitar(Boolean Deshabilitar) {
         btnR1.setEnabled(Deshabilitar);

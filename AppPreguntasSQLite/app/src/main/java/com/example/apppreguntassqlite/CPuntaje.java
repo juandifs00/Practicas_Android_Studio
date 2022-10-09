@@ -17,6 +17,7 @@ public class CPuntaje {
 
     public void setPuntosT(int PTotal) {PuntosT = PTotal;}
 
+    /*
     @Override
     public String toString() {
         return "CRanking{" +
@@ -24,4 +25,5 @@ public class CPuntaje {
                 ", PuntosT=" + PuntosT +
                 '}';
     }
+     */
 }

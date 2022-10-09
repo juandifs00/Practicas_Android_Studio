@@ -28,8 +28,8 @@ public class Perfiles extends AppCompatActivity {
         btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Admin = new Intent(getApplicationContext(), AñadirPreguntas.class);
-                startActivity(Admin);
+                Intent Menu = new Intent(getApplicationContext(), Menu.class);
+                startActivity(Menu);
             }
         });
     }

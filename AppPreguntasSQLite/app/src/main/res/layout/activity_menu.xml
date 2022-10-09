@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Menu"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seleccione lo que quiere hacer"
+        android:textSize="23dp"
+        android:textAlignment="center"
+        android:textColor="@color/orange"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="125dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="20dp"
+                android:id="@+id/btnAgregar"
+                android:src="@drawable/agregar_foreground"
+                ></ImageButton>
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/buscar_foreground"
+                android:id="@+id/btnBuscar"
+                ></ImageButton>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/editar_foreground"
+                android:id="@+id/btnEditar"
+                ></ImageButton>
+
+            <ImageButton
+                android:layout_width="145dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/eliminar_foreground"
+                android:id="@+id/btnEliminar"
+                ></ImageButton>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:text="Regresar"
+            android:backgroundTint="@color/regresar"
+            android:id="@+id/btnRegresar"
+            ></Button>
+
+    </LinearLayout>
+
+</LinearLayout>

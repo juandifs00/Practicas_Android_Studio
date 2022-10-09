@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Eliminar"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Escribe el número de la pregunta que desear eliminar"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        ></TextView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Numero de la pregunta:"
+        android:id="@+id/etNPregunta"
+        android:inputType="number"
+        android:textSize="20dp"
+        ></EditText>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:id="@+id/lvPreguntasExistentes"
+        ></ListView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:text="Eliminar Pregunta"
+        android:backgroundTint="@color/eliminar"
+        android:id="@+id/btnEliminar"
+        ></Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Regresar"
+        android:backgroundTint="@color/regresar"
+        android:id="@+id/btnRegresar"
+        ></Button>
+
+</LinearLayout>

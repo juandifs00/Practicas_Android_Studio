@@ -26,7 +26,7 @@ public class MejoresJugadores extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mejores_jugadores);
         conexion();
-        MostrarMejores();
+        //MostrarMejores();
         adaptar();
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
@@ -39,9 +39,6 @@ public class MejoresJugadores extends AppCompatActivity {
     }
 
     public void adaptar(){
-        DataMJugadores DMJ = new DataMJugadores(this);
-        Rankings = DMJ.LeerRanking();
-
         Collections.sort(Rankings, new Comparator<CPuntaje>() {
             @Override
             public int compare(CPuntaje S1, CPuntaje S2) {
@@ -53,8 +50,6 @@ public class MejoresJugadores extends AppCompatActivity {
     }
 
     public void MostrarMejores() {
-        DataMJugadores DMJ = new DataMJugadores(this);
-        Rankings = DMJ.LeerRanking();
     }
 
     private void conexion() {
