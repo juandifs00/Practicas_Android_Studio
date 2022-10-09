@@ -86,7 +86,7 @@ public class AñadirPreguntas extends AppCompatActivity {
     private ArrayList<String> leerRegistros() {
         ArrayList<String> preguntas = new ArrayList<>();
 
-        DBHelper helper= new DBHelper(this, "LasPreguntas", null, 1);
+        DBHelper helper= new DBHelper(this, "Preguntas", null, 1);
         SQLiteDatabase db= helper.getWritableDatabase();
         String SQL = "select * from Preguntas";
 
