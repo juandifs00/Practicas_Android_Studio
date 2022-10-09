@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     String Acertada, Nombre;
     Button btnTemp;
 
-    //DataMJugadores objAp = new DataMJugadores(this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

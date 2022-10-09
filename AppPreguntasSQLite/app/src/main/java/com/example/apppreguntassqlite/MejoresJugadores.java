@@ -3,6 +3,8 @@ package com.example.apppreguntassqlite;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,17 +19,18 @@ public class MejoresJugadores extends AppCompatActivity {
 
     Button btnVolver;
     ListView lvMJugadores;
-    ArrayAdapter adapter;
 
-    ArrayList<CPuntaje> Rankings = new ArrayList<>();
+    ArrayList<String> Rankings = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mejores_jugadores);
         conexion();
-        //MostrarMejores();
-        adaptar();
+
+        Rankings = leerRegistros();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, Rankings);
+        lvMJugadores.setAdapter(adapter);
 
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,18 +41,23 @@ public class MejoresJugadores extends AppCompatActivity {
         });
     }
 
-    public void adaptar(){
-        Collections.sort(Rankings, new Comparator<CPuntaje>() {
-            @Override
-            public int compare(CPuntaje S1, CPuntaje S2) {
-                return new Integer(S2.getPuntosT()).compareTo(new Integer(S1.getPuntosT()));
-            }
-        });
-        adapter = new ArrayAdapter<CPuntaje>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, Rankings);
-        lvMJugadores.setAdapter(adapter);
-    }
+    private ArrayList<String> leerRegistros() {
+        ArrayList<String> MPuntos = new ArrayList<>();
 
-    public void MostrarMejores() {
+        DBHelperPutaje helper= new DBHelperPutaje(this, "Nom_Puntajes", null, 1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+        String SQL = "select * from Ranking";
+
+        Cursor c = db.rawQuery(SQL, null);
+        if (c.moveToFirst()) {
+            do {
+                String registro = c.getInt(0) + " " +c.getString(1) + " " + c.getInt(2);
+                MPuntos.add(registro);
+
+            }while (c.moveToNext());
+        }
+        db.close();
+        return MPuntos;
     }
 
     private void conexion() {
