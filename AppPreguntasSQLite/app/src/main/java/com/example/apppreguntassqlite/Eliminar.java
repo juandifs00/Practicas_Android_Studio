@@ -49,7 +49,7 @@ public class Eliminar extends AppCompatActivity {
 
         Cursor eliminar = db.rawQuery(SQLC,null);
 
-        if (eliminar.moveToFirst()) {
+        if (eliminar.moveToNext()) {
             String SQLE = "Delete from Preguntas where Id '" + id + "'";
             db.execSQL(SQLE);
             db.close();
