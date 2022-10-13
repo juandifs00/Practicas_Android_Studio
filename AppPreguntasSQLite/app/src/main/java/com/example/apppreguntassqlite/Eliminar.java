@@ -34,12 +34,15 @@ public class Eliminar extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
         lvPreguntasExistentes.setAdapter(adapter);
 
-
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int id = Integer.valueOf(etNPregunta.getText().toString());
+                int id = Integer.parseInt(etNPregunta.getText().toString());
                 Eliminar(id);
+
+                ListaPreguntas = leerRegistros();
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+                lvPreguntasExistentes.setAdapter(adapter);
             }
         });
 
@@ -52,10 +55,20 @@ public class Eliminar extends AppCompatActivity {
         });
     }
 
+    private void Eliminar(int id) {
+        DBHelper helper = new DBHelper(this, "Preguntas", null, 1);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String SQL = "Delete from Preguntas where Id = '" + id + "'";
+        db.execSQL(SQL);
+        db.close();
+        Toast.makeText(this, "Pregunta eliminada", Toast.LENGTH_SHORT).show();
+    }
+
+    /*
     private void Eliminar (int id) {
         DBHelper helper = new DBHelper(this, "Preguntas", null, 1);
         SQLiteDatabase db = helper.getWritableDatabase();
-        String SQLC = "Select * from Preguntas where Id '" + id + "'";
+        String SQLC = "Select * from Preguntas where Id = '" + id + "'";
 
         Cursor eliminar = db.rawQuery(SQLC,null);
 
@@ -70,6 +83,7 @@ public class Eliminar extends AppCompatActivity {
             db.close();
         }
     }
+     */
 
     private ArrayList<String> leerRegistros() {
         ArrayList<String> preguntas = new ArrayList<>();

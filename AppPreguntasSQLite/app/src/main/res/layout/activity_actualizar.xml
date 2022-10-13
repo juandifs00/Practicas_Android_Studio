@@ -5,6 +5,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Actualizar"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¡Edita las preguntas que desees!"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textColor="@color/especial"
+            android:background="@color/purple"
+            ></TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Número de la pregunta"
+            android:id="@+id/etNPregunta"
+            android:inputType="number"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nueva pregunta"
+            android:id="@+id/etPegunta"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nueva respuesta 1"
+            android:id="@+id/etResp1"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nueva respuesta 2"
+            android:id="@+id/etResp2"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nueva respuesta 3"
+            android:id="@+id/etResp3"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nueva respuesta correcta"
+            android:id="@+id/etOpCorrecta"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Puntuacion"
+            android:id="@+id/etPuntuacion"
+            android:inputType="number"
+            ></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registar nueva pregunta"
+            android:id="@+id/btnRegistar"
+            android:backgroundTint="@color/purple"
+            ></Button>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Volver al menu"
+            android:id="@+id/btnVolver"
+            android:backgroundTint="@color/regresar"
+            android:layout_marginTop="8dp"
+            ></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lvPreguntas">
+        </ListView>
+
+    </LinearLayout>
 
 </LinearLayout>

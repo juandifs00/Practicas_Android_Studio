@@ -1,6 +1,7 @@
 package com.example.apppreguntassqlite;
 
 public class CPreguntas {
+    private int ID;
     private String Pregunta;
     private String OpUno;
     private String OpDos;
@@ -8,7 +9,8 @@ public class CPreguntas {
     private String Acertada;
     private int Puntuacion;
 
-    public CPreguntas(String pregunta, String opUno, String opDos, String opTres, String acertada, int puntuacion) {
+    public CPreguntas(int ID, String pregunta, String opUno, String opDos, String opTres, String acertada, int puntuacion) {
+        this.ID = ID;
         Pregunta = pregunta;
         OpUno = opUno;
         OpDos = opDos;
@@ -17,51 +19,72 @@ public class CPreguntas {
         Puntuacion = puntuacion;
     }
 
-    public String getPregunta() {
-        return Pregunta;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public void setPregunta(String pregunta) {
         Pregunta = pregunta;
     }
 
-    public String getOpUno() {
-        return OpUno;
+    public void setOpUno(String opUno) {
+        OpUno = opUno;
     }
 
-    public void setOpUno(String opcionUno) {
-        OpUno = opcionUno;
+    public void setOpDos(String opDos) {
+        OpDos = opDos;
     }
 
-    public String getOpDos() {
-        return OpDos;
-    }
-
-    public void setOpDos(String opcionDos) {
-        OpDos = opcionDos;
-    }
-
-    public String getOpTres() {
-        return OpTres;
-    }
-
-    public void setOpTres(String opcionTres) {
-        OpTres = opcionTres;
-    }
-
-    public String getAcertada() {
-        return Acertada;
+    public void setOpTres(String opTres) {
+        OpTres = opTres;
     }
 
     public void setAcertada(String acertada) {
         Acertada = acertada;
     }
 
+    public void setPuntuacion(int puntuacion) {
+        Puntuacion = puntuacion;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public String getPregunta() {
+        return Pregunta;
+    }
+
+    public String getOpUno() {
+        return OpUno;
+    }
+
+    public String getOpDos() {
+        return OpDos;
+    }
+
+    public String getOpTres() {
+        return OpTres;
+    }
+
+    public String getAcertada() {
+        return Acertada;
+    }
+
     public int getPuntuacion() {
         return Puntuacion;
     }
 
-    public void setPuntucion(int puntuacion) {
-        Puntuacion = puntuacion;
+    @Override
+    public String toString() {
+        return "CPreguntas{" +
+                "ID=" + ID +
+                ", Pregunta='" + Pregunta + '\'' +
+                ", OpUno='" + OpUno + '\'' +
+                ", OpDos='" + OpDos + '\'' +
+                ", OpTres='" + OpTres + '\'' +
+                ", Acertada='" + Acertada + '\'' +
+                ", Puntuacion=" + Puntuacion +
+                '}';
     }
 }

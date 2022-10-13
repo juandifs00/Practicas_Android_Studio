@@ -3,9 +3,11 @@ package com.example.apppreguntassqlite;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
@@ -253,32 +255,34 @@ public class MainActivity extends AppCompatActivity {
             btnTemp.setEnabled(false);
         }
         if ((XPreguntas.size() + PAcertadas) < 20){
-            //guardarPuntos();
+            guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }else if (PAcertadas == 20){
-            //guardarPuntos();
+            guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }
     }
 
-    /*
     public void guardarPuntos() {
         Nombre = etNombre.getText().toString();
-        String Puntos = PuntosTotal + "";
 
-        String POrganizada = Nombre + ";" + Puntos + "/";
+        DBHelperPutaje helperPutaje = new DBHelperPutaje(this, "Nom_Puntos", null, 1);
+        SQLiteDatabase DB = helperPutaje.getWritableDatabase();
 
         try {
-            objAp.EscribirRanking(POrganizada);
-            Toast.makeText(getApplicationContext(), "Datos ingesados correctamente", Toast.LENGTH_SHORT).show();
+            ContentValues cv = new ContentValues();
+            cv.put("nombre_jugador", Nombre);
+            cv.put("puntaje_jugador", PuntosTotal);
+
+            DB.insert("Ranking", null, cv);
+            DB.close();
         }
-        catch (IOException ex) {
-            ex.getMessage();
+        catch (Exception ex) {
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
-     */
 
     public void Habilitar(Boolean Deshabilitar) {
         btnR1.setEnabled(Deshabilitar);

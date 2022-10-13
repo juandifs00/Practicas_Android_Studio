@@ -49,6 +49,10 @@ public class AñadirPreguntas extends AppCompatActivity {
                 Puntuacion = Integer.valueOf(etPuntuacion.getText().toString());
 
                 Agregar(Pregunta, Resp1, Resp2, Resp3, Opcorr, Puntuacion);
+
+                ListaPreguntas = leerRegistros();
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+                lvPreguntas.setAdapter(adapter);
             }
         });
 
@@ -62,16 +66,16 @@ public class AñadirPreguntas extends AppCompatActivity {
     }
 
     public void Agregar(String Pregunta, String Resp1, String Resp2, String Resp3, String RespCor, int Puntuacion) {
-        DBHelper helper = new DBHelper(this, "LasPreguntas", null, 1);
+        DBHelper helper = new DBHelper(this, "Preguntas", null, 1);
         SQLiteDatabase DB = helper.getWritableDatabase();
 
         try {
             ContentValues cv = new ContentValues();
-            cv.put("Pregunta", Pregunta);
-            cv.put("Respuesta 1", Resp1);
-            cv.put("Respuesta 2", Resp2);
-            cv.put("Respuesta 3", Resp3);
-            cv.put("Respuesta correcta", RespCor);
+            cv.put("pregunta", Pregunta);
+            cv.put("respuesta1", Resp1);
+            cv.put("respuesta2", Resp2);
+            cv.put("respuesta3", Resp3);
+            cv.put("respuestacorrecta", RespCor);
             cv.put("Puntaje", Puntuacion);
 
             DB.insert("Preguntas", null, cv);

@@ -30,7 +30,6 @@ public class MostrarPreguntas extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
         lvPreguntasBD.setAdapter(adapter);
 
-
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
