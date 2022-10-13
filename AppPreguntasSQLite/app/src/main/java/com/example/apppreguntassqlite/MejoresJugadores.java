@@ -46,7 +46,7 @@ public class MejoresJugadores extends AppCompatActivity {
 
         DBHelperPutaje helper= new DBHelperPutaje(this, "Nom_Puntajes", null, 1);
         SQLiteDatabase db= helper.getWritableDatabase();
-        String SQL = "select * from Ranking";
+        String SQL = "select * from Ranking Order By puntaje_jugador ASC";
 
         Cursor c = db.rawQuery(SQL, null);
         if (c.moveToFirst()) {
