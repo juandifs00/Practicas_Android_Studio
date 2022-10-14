@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         conexion();
+        XPreguntas = leerRegistros();
         PuntosTotal = 0;
         PuntajePregunta = 0;
 
@@ -240,6 +242,23 @@ public class MainActivity extends AppCompatActivity {
         XPreguntas.remove(intR);
     }
 
+    private ArrayList<CPreguntas> leerRegistros() {
+        ArrayList<CPreguntas> preguntas = new ArrayList<>();
+
+        DBHelper helper= new DBHelper(this, "Preguntas", null, 1);
+        SQLiteDatabase db= helper.getWritableDatabase();
+        String SQL = "select * from Preguntas";
+
+        Cursor c = db.rawQuery(SQL, null);
+        if (c.moveToFirst()) {
+            do {
+                preguntas.add(new CPreguntas(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getInt(6)));
+            }while (c.moveToNext());
+        }
+        db.close();
+        return preguntas;
+    }
+
     public void Comprobar(Button Pregunta) {
         if (Integer.parseInt(Pregunta.getText().toString()) == Integer.parseInt(Acertada)) {
             PuntosTotal += PuntajePregunta;
@@ -254,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
             btnTemp.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
             btnTemp.setEnabled(false);
         }
-        if ((XPreguntas.size() + PAcertadas) < 20){
+        if ((PAcertadas + XPreguntas.size()) < 20){
             guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
@@ -268,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
     public void guardarPuntos() {
         Nombre = etNombre.getText().toString();
 
-        DBHelperPutaje helperPutaje = new DBHelperPutaje(this, "Nom_Puntos", null, 1);
+        DBHelperPutaje helperPutaje = new DBHelperPutaje(this, "Ranking", null, 1);
         SQLiteDatabase DB = helperPutaje.getWritableDatabase();
 
         try {

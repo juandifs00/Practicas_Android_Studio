@@ -49,7 +49,7 @@ public class Eliminar extends AppCompatActivity {
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regresar = new Intent(getApplicationContext(), Perfiles.class);
+                Intent regresar = new Intent(getApplicationContext(), Menu.class);
                 startActivity(regresar);
             }
         });

@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:hint="Respuesta 1"
             android:id="@+id/etResp1"
+            android:inputType="number"
             ></EditText>
 
         <EditText
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:hint="Respuesta 2"
             android:id="@+id/etResp2"
+            android:inputType="number"
             ></EditText>
 
         <EditText
@@ -56,6 +58,7 @@
             android:layout_height="wrap_content"
             android:hint="Respuesta 3"
             android:id="@+id/etResp3"
+            android:inputType="number"
             ></EditText>
 
         <EditText
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:hint="Respuesta correcta"
             android:id="@+id/etOpCorrecta"
+            android:inputType="number"
             ></EditText>
 
         <EditText

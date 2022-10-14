@@ -18,7 +18,7 @@ public class MostrarPreguntas extends AppCompatActivity {
     ListView lvPreguntasBD;
     Button btnRegresar;
 
-    ArrayList<String> ListaPreguntas = new ArrayList<>();
+    ArrayList<CPreguntas> ListaPreguntas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +27,20 @@ public class MostrarPreguntas extends AppCompatActivity {
         conectar();
 
         ListaPreguntas = leerRegistros();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+        ArrayAdapter<CPreguntas> adapter = new ArrayAdapter<CPreguntas>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
         lvPreguntasBD.setAdapter(adapter);
 
         btnRegresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regresar = new Intent(getApplicationContext(), Perfiles.class);
+                Intent regresar = new Intent(getApplicationContext(), Menu.class);
                 startActivity(regresar);
             }
         });
     }
 
-    private ArrayList<String> leerRegistros() {
-        ArrayList<String> preguntas = new ArrayList<>();
+    private ArrayList<CPreguntas> leerRegistros() {
+        ArrayList<CPreguntas> preguntas = new ArrayList<>();
 
         DBHelper helper= new DBHelper(this, "Preguntas", null, 1);
         SQLiteDatabase db= helper.getWritableDatabase();
@@ -49,9 +49,7 @@ public class MostrarPreguntas extends AppCompatActivity {
         Cursor c = db.rawQuery(SQL, null);
         if (c.moveToFirst()) {
             do {
-                String registro = c.getInt(0) + " " +c.getString(1) + " " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getInt(6);
-                preguntas.add(registro);
-
+                preguntas.add(new CPreguntas(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getInt(6)));
             }while (c.moveToNext());
         }
         db.close();

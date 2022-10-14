@@ -77,14 +77,12 @@ public class CPreguntas {
 
     @Override
     public String toString() {
-        return "CPreguntas{" +
-                "ID=" + ID +
-                ", Pregunta='" + Pregunta + '\'' +
-                ", OpUno='" + OpUno + '\'' +
-                ", OpDos='" + OpDos + '\'' +
-                ", OpTres='" + OpTres + '\'' +
-                ", Acertada='" + Acertada + '\'' +
-                ", Puntuacion=" + Puntuacion +
-                '}';
+        return ID + " , " +
+                Pregunta + " , " +
+                OpUno + " , " +
+                OpDos + " , " +
+                OpTres + " , " +
+                Acertada + " , " +
+                Puntuacion;
     }
 }

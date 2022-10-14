@@ -44,9 +44,9 @@ public class MejoresJugadores extends AppCompatActivity {
     private ArrayList<String> leerRegistros() {
         ArrayList<String> MPuntos = new ArrayList<>();
 
-        DBHelperPutaje helper= new DBHelperPutaje(this, "Nom_Puntajes", null, 1);
+        DBHelperPutaje helper= new DBHelperPutaje(this, "Ranking", null, 1);
         SQLiteDatabase db= helper.getWritableDatabase();
-        String SQL = "select * from Ranking Order By puntaje_jugador ASC";
+        String SQL = "select * from Ranking Order By puntaje_jugador DESC";
 
         Cursor c = db.rawQuery(SQL, null);
         if (c.moveToFirst()) {

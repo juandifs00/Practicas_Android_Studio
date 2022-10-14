@@ -22,7 +22,7 @@ public class AñadirPreguntas extends AppCompatActivity {
     Button btnRegistar, btnVolver;
     ListView lvPreguntas;
 
-    ArrayList<String> ListaPreguntas = new ArrayList<>();
+    ArrayList<CPreguntas> ListaPreguntas = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class AñadirPreguntas extends AppCompatActivity {
         conexion();
 
         ListaPreguntas = leerRegistros();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+        ArrayAdapter<CPreguntas> adapter = new ArrayAdapter<CPreguntas>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
         lvPreguntas.setAdapter(adapter);
 
         btnRegistar.setOnClickListener(new View.OnClickListener() {
@@ -51,7 +51,7 @@ public class AñadirPreguntas extends AppCompatActivity {
                 Agregar(Pregunta, Resp1, Resp2, Resp3, Opcorr, Puntuacion);
 
                 ListaPreguntas = leerRegistros();
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+                ArrayAdapter<CPreguntas> adapter = new ArrayAdapter<CPreguntas>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
                 lvPreguntas.setAdapter(adapter);
             }
         });
@@ -59,7 +59,7 @@ public class AñadirPreguntas extends AppCompatActivity {
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regresar = new Intent(getApplicationContext(), MainActivity.class);
+                Intent regresar = new Intent(getApplicationContext(), Menu.class);
                 startActivity(regresar);
             }
         });
@@ -87,8 +87,8 @@ public class AñadirPreguntas extends AppCompatActivity {
         }
     }
 
-    private ArrayList<String> leerRegistros() {
-        ArrayList<String> preguntas = new ArrayList<>();
+    private ArrayList<CPreguntas> leerRegistros() {
+        ArrayList<CPreguntas> preguntas = new ArrayList<>();
 
         DBHelper helper= new DBHelper(this, "Preguntas", null, 1);
         SQLiteDatabase db= helper.getWritableDatabase();
@@ -97,9 +97,7 @@ public class AñadirPreguntas extends AppCompatActivity {
         Cursor c = db.rawQuery(SQL, null);
         if (c.moveToFirst()) {
             do {
-                String registro = c.getInt(0) + " " +c.getString(1) + " " + c.getString(2) + " " + c.getString(3) + " " + c.getString(4) + " " + c.getString(5) + " " + c.getInt(6);
-                preguntas.add(registro);
-
+                preguntas.add(new CPreguntas(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getInt(6)));
             }while (c.moveToNext());
         }
         db.close();
