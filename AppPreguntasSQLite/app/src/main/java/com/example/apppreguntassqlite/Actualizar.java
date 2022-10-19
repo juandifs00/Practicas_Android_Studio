@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -122,6 +123,6 @@ public class Actualizar extends AppCompatActivity implements AdapterView.OnItemC
         etResp2.setText(ListaPreguntas.get(i).getOpDos());
         etResp3.setText(ListaPreguntas.get(i).getOpTres());
         etOpCorrecta.setText(ListaPreguntas.get(i).getAcertada());
-        etPuntuacion.setText(ListaPreguntas.get(i).getPuntuacion());
+        etPuntuacion.setText(String.valueOf(ListaPreguntas.get(i).getPuntuacion()));
     }
 }
