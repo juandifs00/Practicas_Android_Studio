@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         lvDataAlmacenada.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String IdActual = lvDataAlmacenada.getItemIdAtPosition(i).toString();
+                String IdActual = String.valueOf(lvDataAlmacenada.getItemIdAtPosition(i));
+                //String IdActual = lvDataAlmacenada.getItemIdAtPosition(i).toString();
                 String[] datos = IdActual.split("");
 
                 String idn = datos[0];
