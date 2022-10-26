@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -27,7 +30,7 @@ public class Juego extends AppCompatActivity {
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
             btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnMJugadores;
 
-    TextView tvPuntaje, tvPreguntas;
+    TextView tvPuntaje, tvPreguntas, tvTiempo;
 
     EditText etNombre;
 
@@ -51,6 +54,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP1);
+                CuentaRegre();
             }
         });
 
@@ -58,6 +62,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP2);
+                CuentaRegre();
             }
         });
 
@@ -65,6 +70,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP3);
+                CuentaRegre();
             }
         });
 
@@ -72,6 +78,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP4);
+                CuentaRegre();
             }
         });
 
@@ -79,6 +86,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP5);
+                CuentaRegre();
             }
         });
 
@@ -86,6 +94,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP6);
+                CuentaRegre();
             }
         });
 
@@ -93,6 +102,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP7);
+                CuentaRegre();
             }
         });
 
@@ -100,6 +110,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP8);
+                CuentaRegre();
             }
         });
 
@@ -107,6 +118,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP9);
+                CuentaRegre();
             }
         });
 
@@ -114,6 +126,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP10);
+                CuentaRegre();
             }
         });
 
@@ -121,6 +134,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP11);
+                CuentaRegre();
             }
         });
 
@@ -128,6 +142,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP12);
+                CuentaRegre();
             }
         });
 
@@ -135,6 +150,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP13);
+                CuentaRegre();
             }
         });
 
@@ -142,6 +158,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP14);
+                CuentaRegre();
             }
         });
 
@@ -149,6 +166,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP15);
+                CuentaRegre();
             }
         });
 
@@ -156,6 +174,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP16);
+                CuentaRegre();
             }
         });
 
@@ -163,6 +182,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP17);
+                CuentaRegre();
             }
         });
 
@@ -170,6 +190,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP18);
+                CuentaRegre();
             }
         });
 
@@ -177,6 +198,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP19);
+                CuentaRegre();
             }
         });
 
@@ -184,6 +206,7 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP20);
+                CuentaRegre();
             }
         });
 
@@ -218,6 +241,28 @@ public class Juego extends AppCompatActivity {
                 startActivity(Ranking);
             }
         });
+    }
+
+    private long tiempo = 20000;
+
+    private void CuentaRegre() {
+        new CountDownTimer(tiempo, 1000) {
+            public void onTick(long millisUntilFinished) {
+                // Used for formatting digit to be in 2 digits only
+                NumberFormat f = new DecimalFormat("00");
+                /*
+                long hour = (millisUntilFinished / 3600000) % 24;
+                long min = (millisUntilFinished / 60000) % 60;
+                 */
+                long sec = (millisUntilFinished / 1000) % 60;
+                tvTiempo.setText(f.format(sec));
+            }
+            public void onFinish() {
+                tvTiempo.setText(R.string.Sin_tiempo);
+                tvTiempo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.eliminar));
+                Toast.makeText(getApplicationContext(), R.string.Sin_tiempo, Toast.LENGTH_SHORT).show();
+            }
+        }.start();
     }
 
     public void MostrarPregunta(Button NP) {
@@ -353,6 +398,7 @@ public class Juego extends AppCompatActivity {
 
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
+        tvTiempo = findViewById(R.id.tvTiempo);
 
         etNombre = findViewById(R.id.etNombre);
 

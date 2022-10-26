@@ -222,14 +222,31 @@
         </Button>
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:text="Puntaje"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:id="@+id/tvPuntaje"
-        ></TextView>
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="185dp"
+            android:layout_height="match_parent"
+            android:text="Puntaje"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:id="@+id/tvPuntaje"
+            ></TextView>
+
+        <TextView
+            android:layout_width="185dp"
+            android:layout_height="match_parent"
+            android:text="Tiempo"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:id="@+id/tvTiempo"
+            android:layout_marginStart="10dp"
+            ></TextView>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
