@@ -43,7 +43,7 @@ public class Juego extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         conexion();
-        XPreguntas = leerRegistros();
+        //XPreguntas = leerRegistros();
         PuntosTotal = 0;
         PuntajePregunta = 0;
 
@@ -211,7 +211,6 @@ public class Juego extends AppCompatActivity {
             }
         });
 
-        /*
         btnMJugadores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -219,7 +218,6 @@ public class Juego extends AppCompatActivity {
                 startActivity(Ranking);
             }
         });
-         */
     }
 
     public void MostrarPregunta(Button NP) {
@@ -244,6 +242,7 @@ public class Juego extends AppCompatActivity {
         XPreguntas.remove(intR);
     }
 
+    /*
     private ArrayList<CPreguntas> leerRegistros() {
         ArrayList<CPreguntas> preguntas = new ArrayList<>();
 
@@ -260,6 +259,7 @@ public class Juego extends AppCompatActivity {
         db.close();
         return preguntas;
     }
+     */
 
     public void Comprobar(Button Pregunta) {
         if (Integer.parseInt(Pregunta.getText().toString()) == Integer.parseInt(Acertada)) {
@@ -276,16 +276,17 @@ public class Juego extends AppCompatActivity {
             btnTemp.setEnabled(false);
         }
         if ((PAcertadas + XPreguntas.size()) < 20){
-            guardarPuntos();
+            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }else if (PAcertadas == 20){
-            guardarPuntos();
+            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }
     }
 
+    /*
     public void guardarPuntos() {
         Nombre = etNombre.getText().toString();
 
@@ -304,6 +305,7 @@ public class Juego extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
+     */
 
     public void Habilitar(Boolean Deshabilitar) {
         btnR1.setEnabled(Deshabilitar);
