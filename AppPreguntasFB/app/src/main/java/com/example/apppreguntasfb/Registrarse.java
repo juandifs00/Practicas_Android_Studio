@@ -6,17 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.EditText;
 
-public class Administrador extends AppCompatActivity {
+public class Registrarse extends AppCompatActivity {
 
-    ImageButton btnAgregar, btnBuscar, btnEditar, btnEliminar;
-    Button btnRegresar;
+    EditText etNombre, etCorreo, etContraseña;
+    Button btnCRegistro, btnRegresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_administrador);
+        setContentView(R.layout.activity_registrarse);
         conexion();
 
         btnRegresar.setOnClickListener(new View.OnClickListener() {
@@ -30,10 +30,10 @@ public class Administrador extends AppCompatActivity {
     }
 
     private void conexion() {
-        btnAgregar = findViewById(R.id.btnAgregar);
-        btnBuscar = findViewById(R.id.btnBuscar);
-        btnEditar = findViewById(R.id.btnEditar);
-        btnEliminar = findViewById(R.id.btnEliminar);
+        etNombre = findViewById(R.id.etNombre);
+        etCorreo = findViewById(R.id.etCorreo);
+        etContraseña = findViewById(R.id.etContraseña);
+        btnCRegistro = findViewById(R.id.btnCRegistro);
         btnRegresar = findViewById(R.id.btnRegresar);
     }
 }
