@@ -35,8 +35,10 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
     EditText etPregunta, etResp1, etResp2, etResp3, etRespCorrecta, etPuntuacion;
     ListView lvPreguntasDB;
 
-    DatabaseReference DBPreg_Almacenadas;
+    String AuxId, AuxP, AuxR1, AuxR2, AuxR3, AuxRC;
+    int AuxPu;
 
+    DatabaseReference DBPreg_Almacenadas;
 
     private List<CPreguntas> ListaPreguntas = new ArrayList<CPreguntas>();
     ArrayAdapter<CPreguntas> arrayAdapterCPreguntas;
@@ -69,7 +71,21 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Actualizar_Preguntas();
+                String ID, Pregunta, Resp1, Resp2, Resp3, Opcorr;
+                int Puntuacion;
+
+                ID = etPuntuacion.getText().toString();
+                Pregunta = etPregunta.getText().toString();
+                Resp1 = etResp1.getText().toString();
+                Resp2 = etResp2.getText().toString();
+                Resp3 = etResp3.getText().toString();
+                Opcorr = etRespCorrecta.getText().toString();
+                Puntuacion = Integer.parseInt(etPuntuacion.getText().toString());
+
+                Actualizar_Preguntas(ID, Pregunta, Resp1, Resp2, Resp3, Opcorr, Puntuacion);
+
+                ArrayAdapter<CPreguntas> adapter = new ArrayAdapter<CPreguntas>(getApplicationContext(), android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
+                lvPreguntasDB.setAdapter(adapter);
             }
         });
 
@@ -106,15 +122,6 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
                 etPuntuacion.setText(Puntuacion);
             }
         });
-
-        lvPreguntasDB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent I = new Intent(getApplicationContext(), CPreguntas.class);
-                I.putExtra("ID", )
-            }
-        });
-
     }
 
     private void Preguntas_Almacenadas() {
@@ -148,10 +155,10 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
         Toast.makeText(this, R.string.Actualizar, Toast.LENGTH_SHORT).show();
     }
 
-
     private void Eliminar_Pregunta(String ID) {
         DBPreg_Almacenadas = FirebaseDatabase.getInstance().getReference();
         DBPreg_Almacenadas.child("DBPreguntas").child(ID).removeValue();
+        Toast.makeText(this, R.string.Eliminar, Toast.LENGTH_SHORT).show();
     }
 
     private void Insertar() {
@@ -199,7 +206,6 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
     }
      */
 
-
     private void limpiarCajas() {
         etPregunta.setText("");
         etResp1.setText("");
@@ -224,15 +230,19 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
         etPuntuacion = findViewById(R.id.etPuntuacion);
 
         lvPreguntasDB = findViewById(R.id.lvPreguntasBD);
+        lvPreguntasDB.setOnItemClickListener(this);
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        etPregunta.setText(ListaPreguntas.get(i).getPregunta());
-        etResp1.setText(ListaPreguntas.get(i).getOpUno());
-        etResp2.setText(ListaPreguntas.get(i).getOpDos());
-        etResp3.setText(ListaPreguntas.get(i).getOpTres());
-        etRespCorrecta.setText(ListaPreguntas.get(i).getAcertada());
-        etPuntuacion.setText(String.valueOf(ListaPreguntas.get(i).getPuntuacion()));
+        AuxId = ListaPreguntas.get(i).getID();
+        AuxP = ListaPreguntas.get(i).getPregunta();
+        AuxR1 = ListaPreguntas.get(i).getOpUno();
+        AuxR2 = ListaPreguntas.get(i).getOpDos();
+        AuxR3 = ListaPreguntas.get(i).getOpTres();
+        AuxRC = ListaPreguntas.get(i).getAcertada();
+        AuxPu = ListaPreguntas.get(i).getPuntuacion();
+
+        etPregunta.setText(AuxP);
     }
 }
