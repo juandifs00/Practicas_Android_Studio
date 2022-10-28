@@ -1,7 +1,10 @@
 package com.example.timer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -9,13 +12,18 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView tvTimer;
-    Button btnIniciar;
+    TextView tvTimer, tvTimer1;
+    Button btnIniciar, btnp2;
     CountDownTimer cdTimer;
 
-    private long tiempo = 10000;
+    private long tiempo = 20000;
+    private long mTimeLeftInMillis = tiempo;
+
     private boolean corre;
 
     @Override
@@ -24,14 +32,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         conectar();
 
+        btnp2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent P2 = new Intent(getApplicationContext(), Timer2.class);
+                startActivity(P2);
+            }
+        });
+
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                IniciarPausa();
+                //IniciarPausa();
+                //tvTimer1.setText("");
+                CuentaRegre();
             }
         });
-        ActualizarTimer();
+        //ActualizarTimer();
     }
+
+    private void CuentaRegre () {
+        new CountDownTimer(tiempo, 1000) {
+            public void onTick(long millisUntilFinished) {
+                // Used for formatting digit to be in 2 digits only
+                NumberFormat f = new DecimalFormat("00");
+                long hour = (millisUntilFinished / 3600000) % 24;
+                long min = (millisUntilFinished / 60000) % 60;
+                long sec = (millisUntilFinished / 1000) % 60;
+                tvTimer.setText(f.format(sec));
+            }
+            // When the task is over it will print 00:00:00 there
+            public void onFinish() {
+                tvTimer1.setText("SIN TIEMPO");
+                //tvTimer1.setTextColor(Color.RED);
+                //tvTimer1.setTextColor(Color.parseColor("#990000"));
+                tvTimer1.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.eliminar));
+                Toast.makeText(getApplicationContext(), "Pulse Count Completed :)", Toast.LENGTH_SHORT).show();
+            }
+        }.start();
+    }
+
 
     private void IniciarPausa() {
         if (corre)
@@ -78,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void conectar() {
         tvTimer = findViewById(R.id.tvTimer);
+        tvTimer1 = findViewById(R.id.tvTimer);
         btnIniciar = findViewById(R.id.btnIniciar);
+        btnp2 = findViewById(R.id.btnp2);
     }
 }
