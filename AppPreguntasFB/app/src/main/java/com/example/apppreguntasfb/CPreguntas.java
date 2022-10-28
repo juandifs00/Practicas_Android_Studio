@@ -1,7 +1,7 @@
 package com.example.apppreguntasfb;
 
 public class CPreguntas {
-    private int ID;
+    private String ID;
     private String Pregunta;
     private String OpUno;
     private String OpDos;
@@ -9,7 +9,7 @@ public class CPreguntas {
     private String Acertada;
     private int Puntuacion;
 
-    public CPreguntas(int ID, String pregunta, String opUno, String opDos, String opTres, String acertada, int puntuacion) {
+    public CPreguntas(String ID, String pregunta, String opUno, String opDos, String opTres, String acertada, int puntuacion) {
         this.ID = ID;
         Pregunta = pregunta;
         OpUno = opUno;
@@ -19,11 +19,11 @@ public class CPreguntas {
         Puntuacion = puntuacion;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int ID) {
+    public void setID(String ID) {
         this.ID = ID;
     }
 

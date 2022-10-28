@@ -11,7 +11,7 @@ import android.widget.EditText;
 public class Inicio_Sesion extends AppCompatActivity {
 
     EditText etCorreo, etContraseña;
-    Button btnIngresar, btnRegistrarse;
+    Button btnIngresar, btnRegistrarse, btnJugador, btnAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,21 @@ public class Inicio_Sesion extends AppCompatActivity {
             }
         });
 
+        btnJugador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Jugador = new Intent(getApplicationContext(), Juego.class);
+                startActivity(Jugador);
+            }
+        });
+
+        btnAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Admin = new Intent(getApplicationContext(), Administrador.class);
+                startActivity(Admin);
+            }
+        });
     }
 
 
@@ -36,5 +51,7 @@ public class Inicio_Sesion extends AppCompatActivity {
         etContraseña = findViewById(R.id.etContraseña);
         btnIngresar = findViewById(R.id.btnIngresar);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
+        btnJugador = findViewById(R.id.btnJugador);
+        btnAdmin = findViewById(R.id.btnAdmin);
     }
 }

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AppPreguntasFB</string>
     <string name="Sin_tiempo">Se te acabó el tiempo</string>
+    <string name="Insertar_Exito">Datos insertados correctamente</string>
+    <string name="Actualizar">Datos actualizados correctamente</string>
+    <string name="Eliminar">Datos eliminados correctamente</string>
 </resources>

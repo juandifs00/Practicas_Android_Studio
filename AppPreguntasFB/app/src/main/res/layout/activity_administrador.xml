@@ -8,21 +8,62 @@
     android:orientation="vertical"
     android:padding="25dp">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Seleccione lo que quiere hacer"
-        android:textSize="23dp"
-        android:textAlignment="center"
-        android:textColor="@color/orange"
-        ></TextView>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pregunta"
+            android:id="@+id/etPregunta"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta 1"
+            android:id="@+id/etResp1"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta 2"
+            android:id="@+id/etResp2"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta 3"
+            android:id="@+id/etResp3"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta correcta"
+            android:id="@+id/etRespCorrecta"
+            ></EditText>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Puntuacion"
+            android:id="@+id/etPuntuacion"
+            android:inputType="number"
+            ></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="125dp">
+        android:padding="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,17 +71,17 @@
 
             <ImageButton
                 android:layout_width="145dp"
-                android:layout_height="125dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="20dp"
                 android:id="@+id/btnAgregar"
-                android:src="@drawable/Agregar_foreground"
+                android:src="@drawable/agregar_foreground"
                 ></ImageButton>
 
             <ImageButton
                 android:layout_width="145dp"
-                android:layout_height="125dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/Buscar_foreground"
+                android:src="@drawable/buscar_foreground"
                 android:id="@+id/btnBuscar"
                 ></ImageButton>
 
@@ -52,23 +93,30 @@
 
             <ImageButton
                 android:layout_width="145dp"
-                android:layout_height="125dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/Editar_foreground"
+                android:src="@drawable/editar_foreground"
                 android:id="@+id/btnEditar"
                 ></ImageButton>
 
             <ImageButton
                 android:layout_width="145dp"
-                android:layout_height="125dp"
+                android:layout_height="70dp"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/Eliminar_foreground"
+                android:src="@drawable/eliminar_foreground"
                 android:id="@+id/btnEliminar"
                 ></ImageButton>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/lvPreguntasBD"
+        ></ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -77,7 +125,6 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
             android:text="Regresar"
             android:backgroundTint="@color/regresar"
             android:id="@+id/btnRegresar"

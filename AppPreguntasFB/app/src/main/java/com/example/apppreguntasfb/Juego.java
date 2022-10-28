@@ -243,17 +243,12 @@ public class Juego extends AppCompatActivity {
         });
     }
 
-    private long tiempo = 20000;
+    public long tiempo = 20000;
 
-    private void CuentaRegre() {
+    public void CuentaRegre() {
         new CountDownTimer(tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
-                // Used for formatting digit to be in 2 digits only
                 NumberFormat f = new DecimalFormat("00");
-                /*
-                long hour = (millisUntilFinished / 3600000) % 24;
-                long min = (millisUntilFinished / 60000) % 60;
-                 */
                 long sec = (millisUntilFinished / 1000) % 60;
                 tvTiempo.setText(f.format(sec));
             }

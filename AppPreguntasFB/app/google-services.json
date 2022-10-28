@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "506863078870",
+    "project_id": "apppreguntasfb",
+    "storage_bucket": "apppreguntasfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506863078870:android:606d19cbda63e8bf73a877",
+        "android_client_info": {
+          "package_name": "com.example.apppreguntasfb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "506863078870-j0nrc8u9mdkar1k115l5go84q9p0pmu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkmw3JgRczNQW9tfEX_J3DLU08U41RUuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "506863078870-j0nrc8u9mdkar1k115l5go84q9p0pmu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
