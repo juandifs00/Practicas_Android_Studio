@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> ListaContactos = new ArrayList<>();
 
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, ListaContactos);
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
