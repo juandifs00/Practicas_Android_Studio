@@ -55,7 +55,7 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //validacion();
+                validacion();
                 Insertar();
                 limpiarCajas();
             }
@@ -168,43 +168,48 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
         String Respu2 = etResp2.getText().toString();
         String Respu3 = etResp3.getText().toString();
         String RespuCorr = etRespCorrecta.getText().toString();
-        int Puntuacion = Integer .valueOf(etPuntuacion.getText().toString());
+        int Puntuacion = Integer.parseInt(etPuntuacion.getText().toString());
 
         CPreguntas C = new CPreguntas(nId, Pregunta, Respu1, Respu2, Respu3, RespuCorr, Puntuacion);
         Toast.makeText(this, R.string.Insertar_Exito, Toast.LENGTH_SHORT).show();
         DBPreg_Almacenadas.child("DBPreguntas").child(C.getID()).setValue(C);
     }
 
-    /*
     private void validacion() {
         String pregunta = etPregunta.getText().toString();
         String respu1 = etResp1.getText().toString();
         String respu2 = etResp2.getText().toString();
         String respu3 = etResp3.getText().toString();
         String respucorr = etRespCorrecta.getText().toString();
-        int puntaje = Integer.parseInt(etPuntuacion.getText().toString());
+        //int puntaje = Integer.parseInt(etPuntuacion.getText().toString());
 
         if (pregunta.equals("")){
             etPregunta.setError("Required");
+            btnAgregar.setClickable(false);
         }
         else if (respu1.equals("")){
             etResp1.setError("Required");
+            btnAgregar.setClickable(false);
         }
         else if (respu2.equals("")){
             etResp2.setError("Required");
+            btnAgregar.setClickable(false);
         }
         else if (respu3.equals("")){
             etResp3.setError("Required");
+            btnAgregar.setClickable(false);
         }
         else if (respucorr.equals("")){
             etRespCorrecta.setError("Required");
+            btnAgregar.setClickable(false);
         }
         /*
         else if (puntaje.equals("")){
             etPuntuacion.setError("Required");
+            btnAgregar.setClickable(false);
         }
+         */
     }
-     */
 
     private void limpiarCajas() {
         etPregunta.setText("");

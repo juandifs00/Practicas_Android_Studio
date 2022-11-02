@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class Juego extends AppCompatActivity {
@@ -54,7 +55,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP1);
-                CuentaRegre();
             }
         });
 
@@ -62,7 +62,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP2);
-                CuentaRegre();
             }
         });
 
@@ -70,7 +69,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP3);
-                CuentaRegre();
             }
         });
 
@@ -78,7 +76,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP4);
-                CuentaRegre();
             }
         });
 
@@ -86,7 +83,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP5);
-                CuentaRegre();
             }
         });
 
@@ -94,7 +90,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP6);
-                CuentaRegre();
             }
         });
 
@@ -102,7 +97,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP7);
-                CuentaRegre();
             }
         });
 
@@ -110,7 +104,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP8);
-                CuentaRegre();
             }
         });
 
@@ -118,7 +111,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP9);
-                CuentaRegre();
             }
         });
 
@@ -126,7 +118,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP10);
-                CuentaRegre();
             }
         });
 
@@ -134,7 +125,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP11);
-                CuentaRegre();
             }
         });
 
@@ -142,7 +132,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP12);
-                CuentaRegre();
             }
         });
 
@@ -150,7 +139,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP13);
-                CuentaRegre();
             }
         });
 
@@ -158,7 +146,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP14);
-                CuentaRegre();
             }
         });
 
@@ -166,7 +153,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP15);
-                CuentaRegre();
             }
         });
 
@@ -174,7 +160,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP16);
-                CuentaRegre();
             }
         });
 
@@ -182,7 +167,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP17);
-                CuentaRegre();
             }
         });
 
@@ -190,7 +174,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP18);
-                CuentaRegre();
             }
         });
 
@@ -198,7 +181,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP19);
-                CuentaRegre();
             }
         });
 
@@ -206,7 +188,6 @@ public class Juego extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PintPreguntas(btnP20);
-                CuentaRegre();
             }
         });
 
@@ -244,9 +225,54 @@ public class Juego extends AppCompatActivity {
     }
 
     public long tiempo = 20000;
+    public long tiempo_restante = tiempo;
+
+    public CountDownTimer StarStop;
+
+    private boolean corre;
+
+    private void CuentaRegre() {
+        StarStop = new CountDownTimer(tiempo, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                tiempo = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                corre = false;
+                Toast.makeText(getApplicationContext(), R.string.Sin_tiempo, Toast.LENGTH_SHORT).show();
+            }
+        }.start();
+        corre = true;
+    }
+
+    private void pauseTimer() {
+        StarStop.cancel();
+        corre = false;
+    }
+
+    private void resetTimer() {
+        tiempo = tiempo_restante;
+        updateCountDownText();
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (tiempo / 1000) / 60;
+        int seconds = (int) (tiempo / 1000) % 60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        tvTiempo.setText(timeLeftFormatted);
+    }
+
+    /*
+    public long tiempo = 20000;
+    public CountDownTimer StarStop;
 
     public void CuentaRegre() {
-        new CountDownTimer(tiempo, 1000) {
+        StarStop = new CountDownTimer(tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
                 NumberFormat f = new DecimalFormat("00");
                 long sec = (millisUntilFinished / 1000) % 60;
@@ -259,6 +285,7 @@ public class Juego extends AppCompatActivity {
             }
         }.start();
     }
+     */
 
     public void MostrarPregunta(Button NP) {
         btnTemp = NP;
@@ -281,25 +308,6 @@ public class Juego extends AppCompatActivity {
 
         XPreguntas.remove(intR);
     }
-
-    /*
-    private ArrayList<CPreguntas> leerRegistros() {
-        ArrayList<CPreguntas> preguntas = new ArrayList<>();
-
-        DBHelper helper= new DBHelper(this, "Preguntas", null, 1);
-        SQLiteDatabase db= helper.getWritableDatabase();
-        String SQL = "select * from Preguntas";
-
-        Cursor c = db.rawQuery(SQL, null);
-        if (c.moveToFirst()) {
-            do {
-                preguntas.add(new CPreguntas(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getInt(6)));
-            }while (c.moveToNext());
-        }
-        db.close();
-        return preguntas;
-    }
-     */
 
     public void Comprobar(Button Pregunta) {
         if (Integer.parseInt(Pregunta.getText().toString()) == Integer.parseInt(Acertada)) {
