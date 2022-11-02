@@ -26,6 +26,15 @@
         android:text="start" />
 
     <Button
+        android:id="@+id/button_start_pause_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_countdown"
+        android:layout_centerHorizontal="true"
+        android:text="start_2" />
+
+
+    <Button
         android:id="@+id/button_reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,5 +44,12 @@
         android:text="reset"
         android:visibility="invisible"
         tools:visibility="visible" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JAJAJJAJA"
+        android:visibility="gone"
+        ></EditText>
 
 </LinearLayout>

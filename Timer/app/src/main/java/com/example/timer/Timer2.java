@@ -12,16 +12,15 @@ import java.util.Locale;
 
 public class Timer2 extends AppCompatActivity {
 
-    private static final long START_TIME_IN_MILLIS = 600000;
-
     private TextView mTextViewCountDown;
-    private Button mButtonStartPause;
+    private Button mButtonStartPause, button_start_pause_2;
     private Button mButtonReset;
 
     private CountDownTimer mCountDownTimer;
 
     private boolean mTimerRunning;
 
+    private static final long START_TIME_IN_MILLIS = 20000;
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
     @Override
@@ -29,10 +28,7 @@ public class Timer2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer2);
 
-        mTextViewCountDown = findViewById(R.id.text_view_countdown);
-
-        mButtonStartPause = findViewById(R.id.button_start_pause);
-        mButtonReset = findViewById(R.id.button_reset);
+        conexion();
 
         mButtonStartPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +38,15 @@ public class Timer2 extends AppCompatActivity {
                 } else {
                     startTimer();
                 }
+            }
+        });
+
+        button_start_pause_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pauseTimer();
+                resetTimer();
+                startTimer();
             }
         });
 
@@ -98,5 +103,13 @@ public class Timer2 extends AppCompatActivity {
         String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
         mTextViewCountDown.setText(timeLeftFormatted);
+    }
+
+    private void conexion() {
+        mTextViewCountDown = findViewById(R.id.text_view_countdown);
+
+        mButtonStartPause = findViewById(R.id.button_start_pause);
+        button_start_pause_2 = findViewById(R.id.button_start_pause_2);
+        mButtonReset = findViewById(R.id.button_reset);
     }
 }

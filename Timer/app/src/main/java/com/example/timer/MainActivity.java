@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +22,13 @@ public class MainActivity extends AppCompatActivity {
     Button btnIniciar, btnp2;
     CountDownTimer cdTimer;
 
-    private long tiempo = 20000;
+    /*
+    private static final long tiempo = 20000;
     private long mTimeLeftInMillis = tiempo;
+     */
+
+    private static final long START_TIME_IN_MILLIS = 20000;
+    private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
 
     private boolean corre;
 
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         conectar();
 
         btnp2.setOnClickListener(new View.OnClickListener() {
@@ -43,15 +50,53 @@ public class MainActivity extends AppCompatActivity {
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //IniciarPausa();
-                //tvTimer1.setText("");
                 CuentaRegre();
             }
         });
-        //ActualizarTimer();
     }
 
-    private void CuentaRegre () {
+    private void CuentaRegre() {
+        cdTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                mTimeLeftInMillis = millisUntilFinished;
+                updateCountDownText();
+            }
+
+            @Override
+            public void onFinish() {
+                corre = false;
+                btnIniciar.setText("Start");
+                Toast.makeText(getApplicationContext(), "Sin tiempo", Toast.LENGTH_SHORT).show();
+
+            }
+        }.start();
+
+        corre = true;
+    }
+
+    private void pauseTimer() {
+        cdTimer.cancel();
+        corre = false;
+    }
+
+    private void resetTimer() {
+        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+        updateCountDownText();
+        btnIniciar.setVisibility(View.VISIBLE);
+    }
+
+    private void updateCountDownText() {
+        int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
+        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
+
+        tvTimer.setText(timeLeftFormatted);
+    }
+
+    /*
+    private void CuentaRegre() {
         new CountDownTimer(tiempo, 1000) {
             public void onTick(long millisUntilFinished) {
                 // Used for formatting digit to be in 2 digits only
@@ -71,8 +116,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }.start();
     }
+     */
 
-
+    /*
     private void IniciarPausa() {
         if (corre)
             PausarTimer();
@@ -115,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             tvTimer.setText(TiempoRestante);
         }
     }
+     */
 
     private void conectar() {
         tvTimer = findViewById(R.id.tvTimer);
