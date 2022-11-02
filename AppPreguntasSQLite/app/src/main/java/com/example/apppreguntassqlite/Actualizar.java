@@ -44,7 +44,7 @@ public class Actualizar extends AppCompatActivity implements AdapterView.OnItemC
 
             @Override
             public void onClick(View view) {
-                ID = Integer.parseInt(etPuntuacion.getText().toString());
+                //ID = Integer.parseInt(etPuntuacion.getText().toString());
                 Pregunta = etPegunta.getText().toString();
                 Resp1 = etResp1.getText().toString();
                 Resp2 = etResp2.getText().toString();
