@@ -4,4 +4,6 @@
     <string name="Insertar_Exito">Datos insertados correctamente</string>
     <string name="Actualizar">Datos actualizados correctamente</string>
     <string name="Eliminar">Datos eliminados correctamente</string>
+    <string name="Mostrar_Preguntas">Preguntas mostradas correctamente</string>
+    <string name="Error_Mostrar">Error al mostrar las preguntas</string>
 </resources>

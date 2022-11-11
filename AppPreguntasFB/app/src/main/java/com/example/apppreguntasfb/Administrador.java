@@ -40,7 +40,7 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
 
     DatabaseReference DBPreg_Almacenadas;
 
-    private List<CPreguntas> ListaPreguntas = new ArrayList<CPreguntas>();
+    ArrayList<CPreguntas> ListaPreguntas = new ArrayList<CPreguntas>();
     ArrayAdapter<CPreguntas> arrayAdapterCPreguntas;
 
 
@@ -58,6 +58,13 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
                 validacion();
                 Insertar();
                 limpiarCajas();
+            }
+        });
+
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Eliminar_Pregunta(AuxId);
             }
         });
 
@@ -139,11 +146,12 @@ public class Administrador extends AppCompatActivity implements AdapterView.OnIt
                 }
                 arrayAdapterCPreguntas = new ArrayAdapter<CPreguntas>(Administrador.this, android.R.layout.simple_expandable_list_item_1, ListaPreguntas);
                 lvPreguntasDB.setAdapter(arrayAdapterCPreguntas);
+                Toast.makeText(getApplicationContext(), R.string.Mostrar_Preguntas, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getApplicationContext(), R.string.Error_Mostrar, Toast.LENGTH_SHORT).show();
             }
         });
     }
