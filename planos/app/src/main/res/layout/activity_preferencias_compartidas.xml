@@ -24,6 +24,7 @@
         android:hint="Dato Entero"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:inputType="number"
         ></EditText>
 
     <EditText

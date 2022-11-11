@@ -33,7 +33,7 @@ public class PreferenciasCompartidas extends AppCompatActivity {
                 editor.putString("N", valor).apply();
                 editor.putInt("E", datoentero).apply();
                 String Nombre = sp.getString("N", valor);
-                int Nombre2 = sp.getInt("E", datoentero);
+                String Nombre2 = String.valueOf(sp.getInt("E", datoentero));
                 Toast.makeText(getApplicationContext(), Nombre, Toast.LENGTH_LONG).show();
                 tvSalida.setText(Nombre);
                 tvSalidaEntero.setText(Nombre2);
@@ -43,7 +43,9 @@ public class PreferenciasCompartidas extends AppCompatActivity {
 
     private void conectar() {
         etValor = findViewById(R.id.etValor);
-        btnGuardar = findViewById(R.id.btnGuardar);
+        etEntero = findViewById(R.id.etEntero);
         tvSalida = findViewById(R.id.tvSalida);
+        tvSalidaEntero = findViewById(R.id.tvSalidaEntero);
+        btnGuardar = findViewById(R.id.btnGuardar);
     }
 }
