@@ -6,4 +6,7 @@
     <string name="Eliminar">Datos eliminados correctamente</string>
     <string name="Mostrar_Preguntas">Preguntas mostradas correctamente</string>
     <string name="Error_Mostrar">Error al mostrar las preguntas</string>
+    <string name="Error_Crear">Error al crear la cuenta</string>
+    <string name="Error_Contraseña">Contraseña incorrecta</string>
+    <string name="User_Creado">Usuario registrado correctamente</string>
 </resources>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="75dp"
+    tools:context=".Menucito"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvWelcom"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textColor="@color/black"
+            android:text="">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/llUno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAdmin"
+                android:text="Administrar"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/orange"
+                android:layout_marginTop="100dp"
+                ></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llDos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnJugar"
+                android:text="Jugar"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/eliminar"
+                android:layout_marginTop="15dp"
+                ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnPuntaje"
+                android:text="Podio"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/añadir"
+                android:layout_marginTop="15dp"
+                ></Button>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

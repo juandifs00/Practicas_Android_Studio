@@ -31,16 +31,19 @@ public class Juego extends AppCompatActivity {
             btnP8, btnP9, btnP10, btnP11, btnP12, btnP13, btnP14,
             btnP15, btnP16, btnP17, btnP18, btnP19, btnP20, btnR1, btnR2, btnR3, btnMJugadores;
 
-    TextView tvPuntaje, tvPreguntas, tvTiempo;
+    Button btnTemp;
 
-    EditText etNombre;
+    TextView tvPuntaje, tvPreguntas, tvTiempo, TvNombre;
 
     ArrayList<CPreguntas> XPreguntas = new ArrayList<>();
     Random random = new Random();
 
     int PuntajePregunta, PAcertadas, PuntosTotal;
-    String Acertada, Nombre;
-    Button btnTemp;
+    String Acertada;
+
+    CountDownTimer StarStop;
+    public long tiempo;
+    private boolean corre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Juego extends AppCompatActivity {
         //XPreguntas = leerRegistros();
         PuntosTotal = 0;
         PuntajePregunta = 0;
+        TvNombre.setText(Nombre());
 
         btnP1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,72 +228,63 @@ public class Juego extends AppCompatActivity {
         });
     }
 
-    public long tiempo = 20000;
-    public long tiempo_restante = tiempo;
+    private void iniciaPausa(){
+        if(corre);
+        else
+            iniciarTimer();
+    }
 
-    public CountDownTimer StarStop;
-
-    private boolean corre;
-
-    private void CuentaRegre() {
+    public void iniciarTimer(){
         StarStop = new CountDownTimer(tiempo, 1000) {
             @Override
-            public void onTick(long millisUntilFinished) {
-                tiempo = millisUntilFinished;
-                updateCountDownText();
+            public void onTick(long l) {
+                tiempo=l;
+                actualizarTimer();
             }
 
             @Override
             public void onFinish() {
-                corre = false;
-                Toast.makeText(getApplicationContext(), R.string.Sin_tiempo, Toast.LENGTH_SHORT).show();
+
             }
         }.start();
         corre = true;
     }
 
-    private void pauseTimer() {
+    public void pausaTimer(){
         StarStop.cancel();
-        corre = false;
+        corre=false;
     }
 
-    private void resetTimer() {
-        tiempo = tiempo_restante;
-        updateCountDownText();
+    public void actualizarTimer(){
+        int segundos = (int) tiempo % 60000 / 1000;
+        int Aux = segundos - 1;
+        String tiempoRestante = Aux+"";
+        tvTiempo.setText(tiempoRestante);
+        if(Aux >= 0 ){
+            Toast.makeText(getApplicationContext(), R.string.Sin_tiempo, Toast.LENGTH_LONG).show();
+            tvTiempo.setText(R.string.Sin_tiempo);
+        }
     }
 
-    private void updateCountDownText() {
-        int minutes = (int) (tiempo / 1000) / 60;
-        int seconds = (int) (tiempo / 1000) % 60;
-
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-        tvTiempo.setText(timeLeftFormatted);
+    public String Nombre(){
+        String Aux;
+        Bundle pInfo = getIntent().getExtras();
+        if(pInfo != null){
+            Aux = pInfo.getString("Name");
+        } else {
+            Aux = "Anonymous";
+        }
+        return  Aux;
     }
-
-    /*
-    public long tiempo = 20000;
-    public CountDownTimer StarStop;
-
-    public void CuentaRegre() {
-        StarStop = new CountDownTimer(tiempo, 1000) {
-            public void onTick(long millisUntilFinished) {
-                NumberFormat f = new DecimalFormat("00");
-                long sec = (millisUntilFinished / 1000) % 60;
-                tvTiempo.setText(f.format(sec));
-            }
-            public void onFinish() {
-                tvTiempo.setText(R.string.Sin_tiempo);
-                tvTiempo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.eliminar));
-                Toast.makeText(getApplicationContext(), R.string.Sin_tiempo, Toast.LENGTH_SHORT).show();
-            }
-        }.start();
-    }
-     */
 
     public void MostrarPregunta(Button NP) {
+        tiempo = 21000;
+        iniciaPausa();
+
         btnTemp = NP;
+
         ArrayList<String> SeleccionR = new ArrayList<>();
+
         int intR = random.nextInt(XPreguntas.size());
 
         SeleccionR.add(XPreguntas.get(intR).getOpUno());
@@ -310,7 +305,20 @@ public class Juego extends AppCompatActivity {
     }
 
     public void Comprobar(Button Pregunta) {
+        pausaTimer();
+
+        int Tiempo = Integer.parseInt(tvTiempo.getText().toString());
+
         if (Integer.parseInt(Pregunta.getText().toString()) == Integer.parseInt(Acertada)) {
+
+            if (Tiempo >= 16) {
+                PuntosTotal += 5;
+            } else if ((Tiempo <= 15) && (Tiempo >= 11)) {
+                PuntosTotal += 3;
+            } else if ((Tiempo <= 10) && (Tiempo >= 1)) {
+                PuntosTotal += 1;
+            }
+
             PuntosTotal += PuntajePregunta;
             PAcertadas += 1;
 
@@ -324,36 +332,13 @@ public class Juego extends AppCompatActivity {
             btnTemp.setEnabled(false);
         }
         if ((PAcertadas + XPreguntas.size()) < 20){
-            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }else if (PAcertadas == 20){
-            //guardarPuntos();
             Intent Final = new Intent(getApplicationContext(), FinJuego.class);
             startActivity(Final);
         }
     }
-
-    /*
-    public void guardarPuntos() {
-        Nombre = etNombre.getText().toString();
-
-        DBHelperPutaje helperPutaje = new DBHelperPutaje(this, "Ranking", null, 1);
-        SQLiteDatabase DB = helperPutaje.getWritableDatabase();
-
-        try {
-            ContentValues cv = new ContentValues();
-            cv.put("nombre_jugador", Nombre);
-            cv.put("puntaje_jugador", PuntosTotal);
-
-            DB.insert("Ranking", null, cv);
-            DB.close();
-        }
-        catch (Exception ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
-        }
-    }
-     */
 
     public void Habilitar(Boolean Deshabilitar) {
         btnR1.setEnabled(Deshabilitar);
@@ -402,8 +387,7 @@ public class Juego extends AppCompatActivity {
         tvPuntaje = findViewById(R.id.tvPuntaje);
         tvPreguntas = findViewById(R.id.tvPreguntas);
         tvTiempo = findViewById(R.id.tvTiempo);
-
-        etNombre = findViewById(R.id.etNombre);
+        TvNombre = findViewById(R.id.TvNombre);
 
         btnMJugadores = findViewById(R.id.btnMJugadores);
     }
