@@ -52,7 +52,7 @@ public class Inicio_Sesion extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent I = new Intent(getApplicationContext(), Juego.class);
+                    Intent I = new Intent(getApplicationContext(), Administrador.class);
                     startActivity(I);
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.Error_Contraseña, Toast.LENGTH_SHORT).show();
