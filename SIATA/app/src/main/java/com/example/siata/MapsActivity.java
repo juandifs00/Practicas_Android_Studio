@@ -33,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         AñadirEstaciones();
 
-        double Distancia = DistanciaPuntos();
+        //double Distancia = DistanciaNodos();
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -63,29 +63,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         PosEstaciones.add(new Estaciones("81","Barbosa", 6.4369602, -75.3303986, 7));
     }
 
-    public static double DistanciaPuntos(double latitudPunto1, double longitudPunto1, double latitudPunto2, double longitudPunto2) {
-        latitudPunto1 = Math.toRadians(latitudPunto1);
-        longitudPunto1 = Math.toRadians(longitudPunto1);
+    public static double DistanciaNodos(double latitudNodo1, double longitudNodo1,
+                                         double latitudNodo2, double longitudNodo2) {
+        latitudNodo1 = Math.toRadians(latitudNodo1);
+        longitudNodo1 = Math.toRadians(longitudNodo1);
 
-        latitudPunto2 = Math.toRadians(latitudPunto2);
-        longitudPunto2 = Math.toRadians(longitudPunto2);
+        latitudNodo2 = Math.toRadians(latitudNodo2);
+        longitudNodo2 = Math.toRadians(longitudNodo2);
 
         final double RADIO_TIERRA = 6371.01;    // Kilómetros
 
-        double distancia = RADIO_TIERRA * Math.acos(Math.sin(latitudPunto1) * Math.sin(latitudPunto2)
-                + Math.cos(latitudPunto1) * Math.cos(latitudPunto2) * Math.cos(longitudPunto1 - longitudPunto2));
+        double distancia = RADIO_TIERRA * Math.acos(Math.sin(latitudNodo1) * Math.sin(latitudNodo2)
+                + Math.cos(latitudNodo1) * Math.cos(latitudNodo2) * Math.cos(longitudNodo1 - longitudNodo2));
 
         return distancia;
     }
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
