@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -62,6 +63,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         PosEstaciones.add(new Estaciones("101","Girardota", 6.3732505, -75.4483109, 8));
         PosEstaciones.add(new Estaciones("81","Barbosa", 6.4369602, -75.3303986, 7));
     }
+
+    /**
+     * Coordenadas de referencia
+     */
 
     final double MI_LATITUD = 6.16697164311577;
     final double MI_LONGITUD = 75.57830929756166;
@@ -111,6 +116,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return distancia;
     }
 
+    private void matrizPMI() {
+        for (int i = 0; i < n; i++) {
+            pmi[i][0] = PosEstaciones.get(i).getConcentracion();
+        }
+    }
+
+    //Distancia entre 2 puntos
+    private double r(int i, int j){
+        x1=PosEstaciones.get(i).getLatitud();
+        x2=PosEstaciones.get(j).getLatitud();
+        y1=PosEstaciones.get(i).getLongitud();
+        y2=PosEstaciones.get(j).getLongitud();
+        r=Math.sqrt((Math.pow(x1-x2,2))+(Math.pow(y1-y2,2)));
+       return r;
+    }
+
+    private void matrizA() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                fi = r(i, j);
+                a[i][j] = Math.sqrt((1 + (Math.pow(fi, 2))));
+            }
+        }
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -123,7 +153,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         AñadirEstaciones();
 
-        for (int i = 0; i<PosEstaciones.size(); i++) {
+        for (int i = 0; i < PosEstaciones.size(); i++) {
 
             String Codigo = PosEstaciones.get(i).getCodigo();
             String Municipio = PosEstaciones.get(i).getMunicipio();
@@ -144,6 +174,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return false;
     }
 
-    double [][] coordenadas = new double[19][19];
+    /*
+    public void Interporlacion() {
 
+        double [] Latitud = new double[PosEstaciones.size()];
+        double [] Longitud = new double[PosEstaciones.size()];
+
+        for (int i = 0; i < PosEstaciones.size(); i++) {
+
+            double Latitud = PosEstaciones.get(i).getLatitud();
+            double Longitud = PosEstaciones.get(i).getLongitud();
+            int Concentracion = PosEstaciones.get(i).getConcentracion();
+
+        }
+    }
+     */
 }
